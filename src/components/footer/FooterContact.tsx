@@ -14,12 +14,12 @@ const FooterContact: React.FC = () => {
         transition={{ delay: 0.2 }}
       >
         <a 
-          href="mailto:ach@flow-agencies.com" 
+          href="mailto:ach@flowaicom.com" 
           className="flex items-center gap-2 hover:text-blue-400 transition-colors"
           style={{ '--hover-color': colors.neon.blue }}
         >
           <Mail size={16} />
-          ach@flow-agencies.com
+          ach@flowaicom.com
         </a>
         <a 
           href="tel:+33767515497" 
