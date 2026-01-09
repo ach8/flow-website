@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { colors } from '../../utils/colors';
+import SkeletonLoader from '../ui/SkeletonLoader';
 
 const Testimonials: React.FC = () => {
   const { t } = useTranslation();
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Get testimonials array with proper typing
   const testimonials = (t('testimonials.items', { returnObjects: true }) || []) as Array<{
@@ -16,44 +16,22 @@ const Testimonials: React.FC = () => {
     company: string;
   }>;
 
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
+  // Duplicate for seamless loop
+  const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  const renderStars = (rating: number) => {
-    return [...Array(5)].map((_, index) => (
-      <div key={index} className="relative">
-        <Star
-          className="w-5 h-5 text-yellow-400"
-          fill="currentColor"
-        />
-      </div>
-    ));
-  };
-
-  if (!testimonials.length) return null;
+  const renderStars = () => (
+    <div className="flex gap-1 mb-4">
+      {[...Array(5)].map((_, i) => (
+        <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+      ))}
+    </div>
+  );
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <motion.div 
-        className="absolute inset-0"
-        animate={{
-          background: [
-            `radial-gradient(600px at 0% 0%, ${colors.neon.blue}15, transparent)`,
-            `radial-gradient(600px at 100% 100%, ${colors.neon.green}15, transparent)`,
-            `radial-gradient(600px at 0% 0%, ${colors.neon.blue}15, transparent)`
-          ]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-      />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-16"
+    <section className="py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+        <motion.h2
+          className="text-4xl font-bold mb-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -65,83 +43,47 @@ const Testimonials: React.FC = () => {
         >
           {t('testimonials.title')}
         </motion.h2>
+      </div>
 
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 -ml-4 z-10">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={handlePrevious}
-              className="p-2 rounded-full bg-gray-900/80 border border-gray-800 text-gray-400 hover:text-white transition-colors"
+      {/* Infinite Marquee Container */}
+      <div className="relative w-full overflow-hidden mask-linear-gradient">
+        {/* Gradient Masks for smooth fade out at edges */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none" />
+
+        <motion.div
+          className="flex gap-8 py-4"
+          animate={{
+            x: ["0%", "-50%"]
+          }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{ width: "max-content" }}
+        >
+          {extendedTestimonials.map((item, index) => (
+            <div
+              key={index}
+              className="w-[400px] flex-shrink-0 p-8 rounded-2xl bg-gray-900/40 border border-white/5 backdrop-blur-sm hover:bg-gray-800/40 hover:border-blue-500/20 transition-all duration-300 group"
             >
-              <ChevronLeft className="w-6 h-6" />
-            </motion.button>
-          </div>
-          <div className="absolute top-1/2 -translate-y-1/2 right-0 -mr-4 z-10">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={handleNext}
-              className="p-2 rounded-full bg-gray-900/80 border border-gray-800 text-gray-400 hover:text-white transition-colors"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </motion.button>
-          </div>
-
-          {/* Testimonials Carousel */}
-          <div className="relative overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.3 }}
-                className="max-w-4xl mx-auto"
-              >
-                <div className="bg-gray-900/50 p-8 rounded-2xl border border-gray-800">
-                  {/* Rating */}
-                  <div className="flex justify-center mb-6">
-                    <div className="flex gap-1">
-                      {renderStars(5)}
-                    </div>
-                  </div>
-
-                  {/* Quote */}
-                  <blockquote className="text-xl text-gray-300 text-center mb-8">
-                    "{testimonials[currentIndex].quote}"
-                  </blockquote>
-
-                  {/* Author Info */}
-                  <div className="text-center">
-                    <p className="font-semibold text-white">
-                      {testimonials[currentIndex].author}
-                    </p>
-                    <p className="text-gray-400">
-                      {testimonials[currentIndex].role} - {testimonials[currentIndex].company}
-                    </p>
-                  </div>
+              {renderStars()}
+              <blockquote className="text-gray-300 text-lg mb-6 leading-relaxed group-hover:text-white transition-colors">
+                "{item.quote}"
+              </blockquote>
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-sm">
+                  {item.author.charAt(0)}
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-400 w-4' 
-                    : 'bg-gray-600 hover:bg-gray-500'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+                <div>
+                  <p className="font-semibold text-white">{item.author}</p>
+                  <p className="text-sm text-gray-500">{item.role} @ {item.company}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

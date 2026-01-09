@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { MessageSquare, Users, Mail, Database, Mic, Share2, ArrowRight, Check } from 'lucide-react';
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
+import Breadcrumb from '../components/ui/Breadcrumb';
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
@@ -50,6 +51,11 @@ const Services: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      {/* Breadcrumb Navigation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <Breadcrumb items={[{ label: t('nav.services'), href: '/services' }]} />
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
         <motion.div 
@@ -118,12 +124,29 @@ const Services: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group relative p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 flex flex-col h-full"
+                  whileHover={{ y: -8 }}
+                  className="group relative p-8 rounded-xl bg-gray-900/50 border border-gray-800 transition-all duration-300 flex flex-col h-full"
+                  style={{
+                    background: 'rgba(17, 24, 39, 0.5)'
+                  }}
                 >
-                  <div 
+                  {/* Elevated shadow on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    animate={{
+                      boxShadow: '0 20px 40px rgba(59, 130, 246, 0.2), 0 0 20px rgba(59, 130, 246, 0.1)'
+                    }}
+                    style={{
+                      borderRadius: '0.75rem'
+                    }}
+                  />
+
+                  {/* Gradient border on hover */}
+                  <motion.div 
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"
                     style={{
-                      background: `linear-gradient(45deg, ${colors.neon.blue}10, ${colors.neon.green}10)`
+                      background: `linear-gradient(135deg, ${colors.neon.blue}20, ${colors.neon.green}20)`,
+                      padding: '1px'
                     }}
                   />
                   

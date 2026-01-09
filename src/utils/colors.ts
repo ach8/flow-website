@@ -1,13 +1,13 @@
 // Utility for color interpolation and management
 export const colors = {
-  primary: ['#1a365d', '#3182ce', '#90cdf4'],
-  accent: ['#553c9a', '#805ad5', '#b794f4'],
-  emerald: ['#065f46', '#059669', '#34d399'],
+  primary: ['#1e3a8a', '#3b82f6', '#93c5fd'],
+  accent: ['#581c87', '#8b5cf6', '#c4b5fd'],
+  emerald: ['#064e3b', '#10b981', '#6ee7b7'],
   neon: {
-    blue: '#00FFFF',
-    green: '#39FF14',
-    purple: '#FF00FF',
-    pink: '#FF1493'
+    blue: '#00D2FF', // Vivid Cyan - Bright & High Energy
+    green: '#00FF94', // Electric Emerald - Very punchy
+    purple: '#B721FF', // Vivid Purple - Deep but bright
+    pink: '#FF218C'  // Hot Pink - Strong accent
   }
 } as const;
 

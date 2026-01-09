@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Send, CheckCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
+import NeonInput from '../components/ui/NeonInput';
+import NeonTextarea from '../components/ui/NeonTextarea';
 
 interface FormData {
   firstName: string;
@@ -31,6 +33,8 @@ const Contact: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -79,9 +83,16 @@ const Contact: React.FC = () => {
       );
 
       setIsSuccess(true);
+      setIsError(false);
       setFormData({ firstName: '', lastName: '', email: '', message: '' });
     } catch (error) {
       console.error('Form submission failed:', error);
+      setIsError(true);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : t('contact.form.error') || 'Failed to send your message. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -94,6 +105,22 @@ const Contact: React.FC = () => {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
+
+  // Auto-dismiss success message
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => setIsSuccess(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
+
+  // Auto-dismiss error message
+  useEffect(() => {
+    if (isError) {
+      const timer = setTimeout(() => setIsError(false), 6000);
+      return () => clearTimeout(timer);
+    }
+  }, [isError]);
 
   return (
     <div className="min-h-screen py-20">
@@ -126,104 +153,66 @@ const Contact: React.FC = () => {
         >
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
-                  {t('contact.form.firstName')} *
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className={`
-                    w-full px-4 py-3 rounded-lg bg-gray-800 border
-                    focus:outline-none focus:ring-2 transition-all duration-300
-                    ${errors.firstName 
-                      ? 'border-red-500 focus:ring-red-500/50' 
-                      : 'border-gray-700 focus:border-blue-500 focus:ring-blue-500/50'}
-                  `}
-                />
-                {errors.firstName && (
-                  <p className="mt-2 text-sm text-red-500">{errors.firstName}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
-                  {t('contact.form.lastName')} *
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className={`
-                    w-full px-4 py-3 rounded-lg bg-gray-800 border
-                    focus:outline-none focus:ring-2 transition-all duration-300
-                    ${errors.lastName 
-                      ? 'border-red-500 focus:ring-red-500/50' 
-                      : 'border-gray-700 focus:border-blue-500 focus:ring-blue-500/50'}
-                  `}
-                />
-                {errors.lastName && (
-                  <p className="mt-2 text-sm text-red-500">{errors.lastName}</p>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                {t('contact.form.email')} *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+              <NeonInput
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
-                className={`
-                  w-full px-4 py-3 rounded-lg bg-gray-800 border
-                  focus:outline-none focus:ring-2 transition-all duration-300
-                  ${errors.email 
-                    ? 'border-red-500 focus:ring-red-500/50' 
-                    : 'border-gray-700 focus:border-blue-500 focus:ring-blue-500/50'}
-                `}
+                label={t('contact.form.firstName') + ' *'}
+                placeholder="John"
+                color="blue"
+                error={errors.firstName}
+                showSuccess={!!formData.firstName && !errors.firstName}
               />
-              {errors.email && (
-                <p className="mt-2 text-sm text-red-500">{errors.email}</p>
-              )}
+
+              <NeonInput
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                label={t('contact.form.lastName') + ' *'}
+                placeholder="Doe"
+                color="blue"
+                error={errors.lastName}
+                showSuccess={!!formData.lastName && !errors.lastName}
+              />
             </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                {t('contact.form.message')} *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className={`
-                  w-full px-4 py-3 rounded-lg bg-gray-800 border
-                  focus:outline-none focus:ring-2 transition-all duration-300
-                  ${errors.message 
-                    ? 'border-red-500 focus:ring-red-500/50' 
-                    : 'border-gray-700 focus:border-blue-500 focus:ring-blue-500/50'}
-                `}
-              />
-              {errors.message && (
-                <p className="mt-2 text-sm text-red-500">{errors.message}</p>
-              )}
-            </div>
+            <NeonInput
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              label={t('contact.form.email') + ' *'}
+              placeholder="you@example.com"
+              color="blue"
+              error={errors.email}
+              showSuccess={!!formData.email && !errors.email}
+            />
+
+            <NeonTextarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              label={t('contact.form.message') + ' *'}
+              placeholder="Tell us about your project and goals..."
+              color="blue"
+              error={errors.message}
+              maxLength={500}
+              characterCount={true}
+              rows={6}
+            />
 
             <div className="flex justify-center pt-4">
               <NeonButton
                 type="submit"
                 color="blue"
                 disabled={isSubmitting}
+                ariaLabel={isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
                 className="w-full sm:w-auto min-w-[200px] flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
@@ -249,9 +238,41 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               className="fixed bottom-8 right-8 bg-green-500/20 border border-green-500/50 text-green-400 px-6 py-4 rounded-lg flex items-center gap-3"
+              role="alert"
+              aria-live="polite"
             >
               <CheckCircle className="w-5 h-5" />
-              {t('contact.form.success')}
+              <span>{t('contact.form.success')}</span>
+              <button
+                onClick={() => setIsSuccess(false)}
+                className="ml-4 text-green-400 hover:text-green-300 transition-colors"
+                aria-label="Dismiss success message"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </motion.div>
+          )}
+          {isError && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="fixed bottom-8 right-8 bg-red-500/20 border border-red-500/50 text-red-400 px-6 py-4 rounded-lg flex items-center gap-3 max-w-sm"
+              role="alert"
+              aria-live="polite"
+            >
+              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="font-medium">{t('contact.form.error') || 'Error sending message'}</p>
+                <p className="text-sm mt-1 text-red-300">{errorMessage}</p>
+              </div>
+              <button
+                onClick={() => setIsError(false)}
+                className="ml-4 text-red-400 hover:text-red-300 transition-colors flex-shrink-0"
+                aria-label="Dismiss error message"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </motion.div>
           )}
         </AnimatePresence>

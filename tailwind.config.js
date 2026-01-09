@@ -4,14 +4,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Outfit', 'sans-serif'],
       },
       colors: {
         gray: {
           750: '#2D2D2D',
           850: '#1A1A1A',
-          950: '#0A0A0A',
+          950: '#030303', // Obsidian
         },
+        obsidian: '#030303',
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

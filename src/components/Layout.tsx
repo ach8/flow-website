@@ -11,6 +11,7 @@ const Layout: React.FC = () => {
   return (
     <div className="min-h-screen text-gray-100 relative">
       <DynamicBackground />
+      <div className="fixed inset-0 bg-noise pointer-events-none z-[1] opacity-20 mix-blend-overlay" />
       <Navbar />
       <main className="relative">
         <Outlet />

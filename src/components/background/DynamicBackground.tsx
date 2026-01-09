@@ -5,6 +5,9 @@ import { colors } from '../../utils/colors';
 import ParticleField from './ParticleField';
 import GeometricShapes from './GeometricShapes';
 import PulsatingBackground from './PulsatingBackground';
+import ContextualColorShifter from '../effects/ContextualColorShifter';
+import FluidWaveAnimation from '../effects/FluidWaveAnimation';
+import InteractiveGridGlow from '../effects/InteractiveGridGlow';
 
 const DynamicBackground: React.FC = () => {
   const mousePosition = useMousePosition();
@@ -137,6 +140,15 @@ const DynamicBackground: React.FC = () => {
           filter: 'blur(100px)'
         }}
       />
+
+      {/* Contextual Color Shifter - changes colors based on scroll position */}
+      <ContextualColorShifter />
+
+      {/* Fluid Wave Animation overlay */}
+      <FluidWaveAnimation />
+
+      {/* Interactive Grid Glow - responds to mouse movement */}
+      <InteractiveGridGlow />
     </div>
   );
 };

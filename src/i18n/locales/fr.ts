@@ -6,34 +6,34 @@ export default {
     contact: "Contact"
   },
   hero: {
-    title: "L'Automatisation IA pour Transformer Votre Entreprise",
+    title: "Propulsez votre Entreprise dans l'Ère de l'IA",
     subtitle: "Optimisez vos opérations, générez des leads qualifiés et améliorez l'expérience client grâce à nos solutions d'intelligence artificielle",
     cta: {
-      consult: "Consultation Gratuite",
+      consult: "Réserver mon Audit Stratégique",
       learn: "En Savoir Plus"
     }
   },
   valueProposition: {
-    title: "Pourquoi Choisir Flow AI ?",
-    subtitle: "Découvrez comment nos solutions IA éprouvées peuvent transformer votre entreprise. Nos résultats parlent d'eux-mêmes.",
-    efficient: {
-      title: "Croissance de 40%",
-      description: "Nos clients constatent une augmentation moyenne de 40% de leur génération de leads grâce à nos solutions IA.",
-      metric: "Croissance Moyenne"
+    title: "Ne Subissez Plus la Technologie. Dominez-la.",
+    subtitle: "L'alliance parfaite entre stratégie humaine et puissance algorithmique. Des résultats concrets, mesurables et rapides.",
+    roi: {
+      title: "Rentabilité Maximisée",
+      description: "Chaque interaction automatisée est une opportunité de revenus. Ne laissez plus aucun lead vous échapper.",
+      metric: "x3 ROI"
     },
     custom: {
-      title: "98% de Satisfaction",
-      description: "Satisfaction client exceptionnelle grâce à un support 24/7 et des solutions personnalisées.",
-      metric: "Clients Satisfaits"
+      title: "Architecture Unique",
+      description: "Pas de solutions copier-coller. Nous construisons l'écosystème IA qui s'adapte à VOTRE réalité.",
+      metric: "100% Adapté"
     },
-    expert: {
-      title: "60% de Temps Gagné",
-      description: "Automatisez les tâches répétitives et concentrez-vous sur l'essentiel pour votre entreprise.",
-      metric: "Productivité Améliorée"
+    speed: {
+      title: "Déploiement Éclair",
+      description: "De l'audit au premier résultat, nous avançons vite. Très vite.",
+      metric: "2 Semaines"
     }
   },
   services: {
-    title: "Nos Solutions IA",
+    title: "Des Solutions qui Rapportent",
     subtitle: "Découvrez comment nos services alimentés par l'IA peuvent transformer vos opérations et stimuler votre croissance",
     overview: {
       title: "Transformez Votre Entreprise avec l'IA",
@@ -41,64 +41,64 @@ export default {
     },
     items: {
       chatbot: {
-        title: "Chatbots IA Avancés",
-        description: "Révolutionnez votre service client avec des chatbots intelligents qui apprennent et s'adaptent. Notre solution offre:\n• Réponses instantanées 24/7 avec compréhension contextuelle\n• Personnalisation basée sur l'historique client\n• Intégration multilingue et multicanal\n• Analyse des sentiments en temps réel",
+        title: "Assistant IA 24/7",
+        description: "Révolutionnez votre service client avec des assistants qui ne dorment jamais.",
         benefits: [
-          "Réduction de 60% du temps de réponse moyen",
-          "Augmentation de 40% de la satisfaction client",
-          "Gestion simultanée de milliers de conversations"
+          "Réponses instantanées (0s d'attente)",
+          "Disponibilité 24/7/365",
+          "Satisfaction client +40%"
         ],
-        ideal: "Parfait pour les entreprises cherchant à offrir un support client exceptionnel 24/7"
+        ideal: "Pour un support client exceptionnel"
       },
       leads: {
-        title: "Génération de Leads IA",
-        description: "Maximisez votre acquisition client avec notre système intelligent de génération de leads. Caractéristiques principales:\n• Identification prédictive des prospects à fort potentiel\n• Scoring automatisé des leads\n• Personnalisation des parcours de conversion\n• Analyse comportementale avancée",
+        title: "Machine à Conversion",
+        description: "Transformez vos visiteurs en clients qualifiés automatiquement.",
         benefits: [
-          "Augmentation moyenne de 45% du taux de conversion",
-          "Réduction de 50% du coût par acquisition",
-          "Qualification automatique des prospects"
+          "Qualification automatique",
+          "Taux de conversion +45%",
+          "Coût d'acquisition -50%"
         ],
-        ideal: "Idéal pour les entreprises B2B et B2C cherchant à optimiser leur pipeline commercial"
+        ideal: "Pour booster votre pipeline commercial"
       },
       email: {
-        title: "Automatisation Email IA",
-        description: "Optimisez vos campagnes email avec une personnalisation poussée. Notre solution comprend:\n• Segmentation dynamique de l'audience\n• Optimisation du timing d'envoi par IA\n• Personnalisation du contenu en temps réel\n• Tests A/B automatisés",
+        title: "Campagnes Intelligentes",
+        description: "Des emails ultra-personnalisés qui sont réellement lus.",
         benefits: [
-          "Amélioration de 35% des taux d'ouverture",
-          "Augmentation de 50% des taux de clic",
-          "Personnalisation à grande échelle"
+          "Taux d'ouverture +35%",
+          "Personnalisation 1:1",
+          "Tests A/B automatisés"
         ],
-        ideal: "Parfait pour les marketeurs cherchant à maximiser l'impact de leurs campagnes email"
+        ideal: "Pour maximiser l'impact marketing"
       },
       crm: {
-        title: "CRM Intelligent",
-        description: "Transformez votre gestion client avec notre CRM alimenté par l'IA. Fonctionnalités clés:\n• Prédiction des comportements clients\n• Automatisation des tâches administratives\n• Analyses prédictives des ventes\n• Recommandations d'actions personnalisées",
+        title: "Intelligence Client",
+        description: "Anticipez les besoins de vos clients avant qu'ils ne les expriment.",
         benefits: [
-          "Gain de productivité de 40%",
-          "Amélioration de 55% de la rétention client",
-          "Prédictions précises des opportunités"
+          "Prédiction des ventes",
+          "Rétention client +55%",
+          "Gain de productivité 40%"
         ],
-        ideal: "Essentiel pour les entreprises souhaitant optimiser leur relation client"
+        ideal: "Pour optimiser la relation client"
       },
       voice: {
-        title: "IA Vocale Avancée",
-        description: "Créez des expériences vocales naturelles et engageantes. Notre solution propose:\n• Reconnaissance vocale multilingue\n• Synthèse vocale naturelle\n• Analyse des émotions en temps réel\n• Intégration omnicanale",
+        title: "Agents Vocaux IA",
+        description: "Une voix naturelle pour accueillir et guider vos appelants.",
         benefits: [
-          "Taux de reconnaissance supérieur à 98%",
-          "Réduction de 45% des temps d'attente",
-          "Support vocal 24/7"
+          "Reconnaissance à 98%",
+          "Support multilingue",
+          "Attente téléphonique supprimée"
         ],
-        ideal: "Idéal pour les entreprises cherchant à offrir une expérience client innovante"
+        ideal: "Pour une expérience téléphonique moderne"
       },
       social: {
-        title: "Gestion IA des Réseaux Sociaux",
-        description: "Optimisez votre présence sociale avec l'intelligence artificielle. Fonctionnalités:\n• Planification automatisée des publications\n• Analyse des tendances en temps réel\n• Modération intelligente des commentaires\n• Engagement automatisé personnalisé",
+        title: "Social Media Auto",
+        description: "Une présence sociale active et engageante, sans y passer vos nuits.",
         benefits: [
-          "Augmentation de 70% de l'engagement",
-          "Économie de 20h/semaine en gestion",
-          "Détection proactive des opportunités"
+          "Engagement +70%",
+          "Veille concurrentielle",
+          "Planification intelligente"
         ],
-        ideal: "Parfait pour les marques souhaitant maximiser leur impact sur les réseaux sociaux"
+        ideal: "Pour dominer les réseaux sociaux"
       }
     },
     learnMore: "En Savoir Plus"
@@ -127,13 +127,42 @@ export default {
     ]
   },
   cta: {
-    title: "Prêt à Transformer Votre Entreprise ?",
-    subtitle: "Découvrez comment Flow AI peut révolutionner vos opérations",
+    title: "Ne laissez pas vos concurrents prendre l'avance.",
+    subtitle: "Prenez rendez-vous aujourd'hui et commencez à automatiser demain.",
     button: "Planifier une Démo",
     consult: "Consultation Gratuite",
     start: "Commencer",
     learnMore: "En Savoir Plus",
-    createFuture: "Créons l'Avenir Ensemble"
+    createFuture: "Créons l'Avenir Ensemble",
+    consultationNote: "Aucune carte de crédit requise • 30 minutes"
+  },
+  process: {
+    title: "Votre Feuille de Route",
+    subtitle: "Une approche claire et structurée, de l'audit initial au déploiement final",
+    audit: {
+      title: "Audit Stratégique",
+      description: "Nous analysons vos processus actuels pour identifier les gisements de croissance et les opportunités d'automatisation à fort impact.",
+      details: "Notre équipe d'experts plonge au cœur de votre activité pour comprendre vos défis uniques. Nous ne cherchons pas seulement à automatiser, mais à optimiser l'ensemble de votre chaîne de valeur.",
+      deliverables: ["Rapport d'audit complet", "Cartographie des processus", "Estimation du ROI"]
+    },
+    plan: {
+      title: "Planification Sur-Mesure",
+      description: "Nous concevons une architecture IA unique, parfaitement alignée avec vos objectifs business et votre infrastructure existante.",
+      details: "Nous élaborons une feuille de route détaillée qui priorise les actions à fort impact. Chaque solution est choisie pour sa pertinence et sa capacité à s'intégrer sans friction.",
+      deliverables: ["Architecture technique", "Feuille de route de déploiement", "Maquettes UX/UI"]
+    },
+    ai: {
+      title: "Déploiement Intelligent",
+      description: "Nos experts intègrent les solutions IA dans votre écosystème avec une transition fluide et sans interruption de service.",
+      details: "Le développement se fait par itérations agiles. Nous testons rigoureusement chaque module pour garantir une fiabilité absolue et une performance optimale dès le premier jour.",
+      deliverables: ["Solutions IA fonctionnelles", "Intégration CRM/ERP", "Formation des équipes"]
+    },
+    support: {
+      title: "Optimisation Continue",
+      description: "Nous ne vous lâchons pas. Suivi des performances en temps réel et ajustement constant pour garantir un ROI maximal.",
+      details: "L'IA évolue vite, et votre entreprise aussi. Nous surveillons les performances 24/7 et proposons des améliorations proactives pour garder une longueur d'avance.",
+      deliverables: ["Dashboard de performance", "Rapports mensuels", "Support technique prioritaire"]
+    }
   },
   about: {
     hero: {

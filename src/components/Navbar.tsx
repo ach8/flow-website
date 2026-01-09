@@ -19,7 +19,8 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { to: '/', label: t('nav.home') },
     { to: '/services', label: t('nav.services') },
-    { to: '/about', label: t('nav.about') }
+    { to: '/about', label: t('nav.about') },
+    { to: '/contact', label: t('nav.contact') }
   ];
 
   const handleConsultClick = () => {

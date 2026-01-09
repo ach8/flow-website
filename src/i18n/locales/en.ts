@@ -6,34 +6,34 @@ export default {
     contact: "Contact"
   },
   hero: {
-    title: "AI-Powered Automation to Transform Your Business",
+    title: "Propel Your Business into the AI Era",
     subtitle: "We streamline your operations, generate leads, and elevate customer experiences with intelligent AI solutions",
     cta: {
-      consult: "Get a Free Consultation",
+      consult: "Book My Strategic Audit",
       learn: "Learn More"
     }
   },
   valueProposition: {
-    title: "Why Choose Flow AI?",
-    subtitle: "Discover how our proven AI solutions can transform your business. Our results speak for themselves.",
-    efficient: {
-      title: "40% Increase",
-      description: "Our clients see an average 40% increase in lead generation thanks to our AI solutions.",
-      metric: "Average Growth"
+    title: "Don't Just Adopt Tech. Dominate It.",
+    subtitle: "The perfect alliance between human strategy and algorithmic power. Concrete, measurable, and fast results.",
+    roi: {
+      title: "Maximized Profitability",
+      description: "Every automated interaction is a revenue opportunity. Stop letting leads slip through the cracks.",
+      metric: "3x ROI"
     },
     custom: {
-      title: "98% Satisfaction",
-      description: "Exceptional customer satisfaction through 24/7 support and customized solutions.",
-      metric: "Satisfied Clients"
+      title: "Unique Architecture",
+      description: "No cookie-cutter solutions. We build the AI ecosystem that adapts to YOUR reality.",
+      metric: "100% Tailored"
     },
-    expert: {
-      title: "60% Time Saved",
-      description: "Automate repetitive tasks and focus on what truly matters for your business.",
-      metric: "Improved Productivity"
+    speed: {
+      title: "Lightning Deployment",
+      description: "From audit to first results, we move fast. Very fast.",
+      metric: "2 Weeks"
     }
   },
   services: {
-    title: "Our AI Solutions",
+    title: "Solutions That Pay Off",
     subtitle: "Discover how our AI-powered services can transform your operations and drive growth",
     overview: {
       title: "Transform Your Business with AI",
@@ -41,64 +41,64 @@ export default {
     },
     items: {
       chatbot: {
-        title: "Advanced AI Chatbots",
-        description: "Revolutionize your customer service with intelligent chatbots that learn and adapt. Our solution offers:\n• 24/7 instant responses with contextual understanding\n• Personalization based on customer history\n• Multilingual and multichannel integration\n• Real-time sentiment analysis",
+        title: "24/7 AI Assistant",
+        description: "Revolutionize your customer service with assistants that never sleep.",
         benefits: [
-          "60% reduction in average response time",
-          "40% increase in customer satisfaction",
-          "Handle thousands of conversations simultaneously"
+          "Instant responses (0s wait)",
+          "24/7/365 Availability",
+          "Customer Satisfaction +40%"
         ],
-        ideal: "Perfect for businesses looking to provide exceptional 24/7 customer support"
+        ideal: "For exceptional customer support"
       },
       leads: {
-        title: "AI Lead Generation",
-        description: "Maximize your customer acquisition with our intelligent lead generation system. Key features:\n• Predictive identification of high-potential prospects\n• Automated lead scoring\n• Conversion journey personalization\n• Advanced behavioral analysis",
+        title: "Conversion Engine",
+        description: "Automatically turn your visitors into qualified clients.",
         benefits: [
-          "45% average increase in conversion rates",
-          "50% reduction in acquisition costs",
-          "Automated prospect qualification"
+          "Automated qualification",
+          "Conversion rate +45%",
+          "Acquisition cost -50%"
         ],
-        ideal: "Ideal for B2B and B2C businesses looking to optimize their sales pipeline"
+        ideal: "To boost your sales pipeline"
       },
       email: {
-        title: "AI Email Automation",
-        description: "Optimize your email campaigns with advanced personalization. Our solution includes:\n• Dynamic audience segmentation\n• AI-powered send time optimization\n• Real-time content personalization\n• Automated A/B testing",
+        title: "Smart Campaigns",
+        description: "Hyper-personalized emails that actually get read.",
         benefits: [
-          "35% improvement in open rates",
-          "50% increase in click-through rates",
-          "Large-scale personalization capabilities"
+          "Open rates +35%",
+          "1:1 Personalization",
+          "Automated A/B Testing"
         ],
-        ideal: "Perfect for marketers looking to maximize their email campaign impact"
+        ideal: "To maximize marketing impact"
       },
       crm: {
-        title: "Intelligent CRM",
-        description: "Transform your customer management with our AI-powered CRM. Key features:\n• Customer behavior prediction\n• Administrative task automation\n• Predictive sales analytics\n• Personalized action recommendations",
+        title: "Client Intelligence",
+        description: "Anticipate your clients' needs before they even express them.",
         benefits: [
-          "40% productivity gain",
-          "55% improvement in customer retention",
-          "Accurate opportunity predictions"
+          "Sales prediction",
+          "Client retention +55%",
+          "Productivity gain 40%"
         ],
-        ideal: "Essential for businesses looking to optimize their customer relationships"
+        ideal: "To optimize client relationships"
       },
       voice: {
-        title: "Advanced Voice AI",
-        description: "Create natural and engaging voice experiences. Our solution offers:\n• Multilingual voice recognition\n• Natural voice synthesis\n• Real-time emotion analysis\n• Omnichannel integration",
+        title: "AI Voice Agents",
+        description: "A natural voice to welcome and guide your callers.",
         benefits: [
-          "98%+ recognition accuracy",
-          "45% reduction in wait times",
-          "24/7 voice support"
+          "98% Recognition rate",
+          "Multilingual support",
+          "Zero hold time"
         ],
-        ideal: "Ideal for businesses seeking to provide innovative customer experiences"
+        ideal: "For a modern phone experience"
       },
       social: {
-        title: "AI Social Media Management",
-        description: "Optimize your social presence with artificial intelligence. Features:\n• Automated post scheduling\n• Real-time trend analysis\n• Intelligent comment moderation\n• Personalized automated engagement",
+        title: "Social Media Auto",
+        description: "An active and engaging social presence, without the late nights.",
         benefits: [
-          "70% increase in engagement",
-          "20 hours/week saved in management",
-          "Proactive opportunity detection"
+          "Engagement +70%",
+          "Competitor monitoring",
+          "Smart scheduling"
         ],
-        ideal: "Perfect for brands looking to maximize their social media impact"
+        ideal: "To dominate social networks"
       }
     },
     learnMore: "Learn More"
@@ -127,13 +127,42 @@ export default {
     ]
   },
   cta: {
-    title: "Ready to Transform Your Business?",
-    subtitle: "Discover how Flow AI can revolutionize your operations",
+    title: "Don't Let Your Competitors Get Ahead.",
+    subtitle: "Book today, start automating tomorrow.",
     button: "Schedule a Demo",
     consult: "Free Consultation",
     start: "Get Started",
     learnMore: "Learn More",
-    createFuture: "Let's Create the Future Together"
+    createFuture: "Let's Create the Future Together",
+    consultationNote: "No credit card required • 30 minutes"
+  },
+  process: {
+    title: "Our Process",
+    subtitle: "A transparent 4-step approach to transform your business with AI",
+    audit: {
+      title: "Initial Audit",
+      description: "We conduct a comprehensive analysis of your website, identifying optimization opportunities and AI integration needs.",
+      details: "Our team of experts dives deep into your business to understand your unique challenges. We don't just look to automate, but to optimize your entire value chain.",
+      deliverables: ["Full Audit Report", "Process Mapping", "ROI Estimation"]
+    },
+    plan: {
+      title: "Action Plan",
+      description: "We create a personalized roadmap with AI strategies, implementation timeline, and ROI projections.",
+      details: "We develop a detailed roadmap prioritizing high-impact actions. Each solution is chosen for its relevance and ability to integrate frictionlessly.",
+      deliverables: ["Technical Architecture", "Deployment Roadmap", "UX/UI Mockups"]
+    },
+    ai: {
+      title: "AI Integration",
+      description: "We implement advanced AI solutions, automate processes, and integrate cutting-edge tools seamlessly.",
+      details: "Development is done in agile iterations. We rigorously test every module to ensure absolute reliability and optimal performance from day one.",
+      deliverables: ["Functional AI Solutions", "CRM/ERP Integration", "Team Training"]
+    },
+    support: {
+      title: "Optimization & Support",
+      description: "Continuous monitoring, performance tracking, and ongoing technical support for maximum results.",
+      details: "AI evolves fast, and so does your business. We monitor performance 24/7 and propose proactive improvements to stay ahead of the curve.",
+      deliverables: ["Performance Dashboard", "Monthly Reports", "Priority Technical Support"]
+    }
   },
   about: {
     hero: {

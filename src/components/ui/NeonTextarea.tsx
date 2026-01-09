@@ -2,34 +2,45 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { colors } from '../../utils/colors';
 
-interface NeonInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface NeonTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   color?: keyof typeof colors.neon;
   label?: string;
   error?: string;
-  showSuccess?: boolean;
+  characterCount?: boolean;
+  maxLength?: number;
 }
 
-const NeonInput: React.FC<NeonInputProps> = ({
+const NeonTextarea: React.FC<NeonTextareaProps> = ({
   color = 'blue',
   label,
   error = '',
-  showSuccess = false,
+  characterCount = false,
+  maxLength,
+  value = '',
   ...props
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const neonColor = error ? '#ef4444' : colors.neon[color];
+  const charCount = typeof value === 'string' ? value.length : 0;
 
   return (
     <div className="relative">
       {label && (
-        <label 
-          className="block mb-2 text-sm font-medium transition-colors duration-300"
-          style={{ 
-            color: isFocused ? neonColor : '#d1d5db',
-          }}
-        >
-          {label}
-        </label>
+        <div className="flex justify-between items-center mb-2">
+          <label 
+            className="text-sm font-medium transition-colors duration-300"
+            style={{ 
+              color: isFocused ? neonColor : '#d1d5db',
+            }}
+          >
+            {label}
+          </label>
+          {characterCount && maxLength && (
+            <span className={`text-xs transition-colors duration-300 ${error ? 'text-red-400' : 'text-gray-400'}`}>
+              {charCount}/{maxLength}
+            </span>
+          )}
+        </div>
       )}
       
       <motion.div
@@ -46,8 +57,10 @@ const NeonInput: React.FC<NeonInputProps> = ({
           borderRadius: '0.5rem'
         }}
       >
-        <input
+        <textarea
           {...props}
+          value={value}
+          maxLength={maxLength}
           onFocus={(e) => {
             setIsFocused(true);
             props.onFocus?.(e);
@@ -62,6 +75,7 @@ const NeonInput: React.FC<NeonInputProps> = ({
             rounded-lg 
             border-2 transition-all duration-300
             focus:outline-none relative z-10
+            resize-none
             ${error 
               ? 'border-red-500' 
               : isFocused 
@@ -72,17 +86,6 @@ const NeonInput: React.FC<NeonInputProps> = ({
             color: '#fff'
           }}
         />
-
-        {/* Success checkmark */}
-        {showSuccess && !error && isFocused && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-green-400 font-bold text-lg"
-          >
-            ✓
-          </motion.div>
-        )}
       </motion.div>
 
       {/* Error message */}
@@ -99,4 +102,4 @@ const NeonInput: React.FC<NeonInputProps> = ({
   );
 };
 
-export default NeonInput;
+export default NeonTextarea;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { TrendingUp, Shield, Zap, ArrowRight } from 'lucide-react';
+import { TrendingUp, Shield, Zap, ArrowRight, Activity, Cpu, Network } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import NeonButton from '../ui/NeonButton';
 
@@ -11,58 +11,27 @@ const ValueProposition: React.FC = () => {
   const handleConsultClick = () => {
     window.open('https://calendly.com/achraf-farhat98/consultation', '_blank');
   };
-  
-  const benefits = [
-    {
-      icon: <TrendingUp className="w-12 h-12" />,
-      metric: "40%",
-      detail: t('valueProposition.efficient.metric')
-    },
-    {
-      icon: <Shield className="w-12 h-12" />,
-      metric: "98%",
-      detail: t('valueProposition.custom.metric')
-    },
-    {
-      icon: <Zap className="w-12 h-12" />,
-      metric: "60%",
-      detail: t('valueProposition.expert.metric')
-    }
-  ];
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 to-gray-900/80" />
-      
-      <motion.div 
-        className="absolute inset-0"
-        animate={{
-          background: [
-            `radial-gradient(600px at 20% 20%, ${colors.neon.blue}08, transparent 40%)`,
-            `radial-gradient(600px at 80% 80%, ${colors.neon.green}08, transparent 40%)`,
-            `radial-gradient(600px at 20% 20%, ${colors.neon.blue}08, transparent 40%)`
-          ]
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-      />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 
-            className="text-4xl font-bold mb-6"
+    <section className="py-24 relative overflow-hidden">
+      {/* Background Ambience removed to unify */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <motion.h2
+            className="text-4xl md:text-6xl font-black mb-6 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{
-              background: `linear-gradient(to right, ${colors.neon.blue}, ${colors.neon.green})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}
           >
-            {t('valueProposition.title')}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-gray-400">
+              {t('valueProposition.title')}
+            </span>
           </motion.h2>
           <motion.p
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            className="text-xl text-gray-400 max-w-2xl mx-auto font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -71,87 +40,159 @@ const ValueProposition: React.FC = () => {
             {t('valueProposition.subtitle')}
           </motion.p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-800/30 to-gray-900/30 rounded-xl border border-gray-800/50 transition-all duration-300 group-hover:border-gray-700/50" />
-              
-              <div className="relative p-8 z-10">
-                <div className="mb-6 text-center">
-                  <div className="text-4xl font-bold mb-2" style={{ color: colors.neon.blue }}>
-                    {benefit.metric}
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)] mb-16">
+
+          {/* Main Card: ROI (Spans 2 cols, 2 rows on Desktop) -> Actually mostly vertical split or wide? */}
+          {/* Let's do Left Big Column (2 rows height), Right Column (2 stacked cards) */}
+
+          {/* Card 1: ROI (Left, Tall) */}
+          <BentoCard
+            className="lg:col-span-2 lg:row-span-2 min-h-[400px]"
+            delay={0.1}
+          >
+            <div className="relative h-full flex flex-col justify-between">
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                    <TrendingUp size={24} />
                   </div>
-                  <div className="text-sm text-gray-400">{benefit.detail}</div>
+                  <span className="text-blue-400 font-mono text-sm tracking-wider uppercase">Résultats</span>
                 </div>
-                
-                <motion.div
-                  className="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <div className="text-blue-400 transform transition-transform duration-300 group-hover:scale-110">
-                    {benefit.icon}
-                  </div>
-                </motion.div>
-                
-                <h3 className="text-xl font-semibold mb-4 text-gray-100">
-                  {t(`valueProposition.${index === 0 ? 'efficient' : index === 1 ? 'custom' : 'expert'}.title`)}
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  {t(`valueProposition.${index === 0 ? 'efficient' : index === 1 ? 'custom' : 'expert'}.description`)}
-                </p>
+                <h3 className="text-3xl font-bold text-white mb-2">{t('valueProposition.roi.title')}</h3>
+                <p className="text-gray-400 text-lg max-w-md">{t('valueProposition.roi.description')}</p>
               </div>
 
-              <motion.div
-                className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(circle at center, ${colors.neon.blue}05, transparent 70%)`,
-                  filter: 'blur(20px)',
-                }}
-              />
-            </motion.div>
-          ))}
+              {/* Animated Graph Visual */}
+              <div className="absolute right-0 bottom-0 top-1/2 w-full lg:w-2/3 opacity-20 lg:opacity-30 pointer-events-none">
+                <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible">
+                  <path
+                    d="M0 80 Q 40 80, 50 60 T 100 40 T 150 20 T 200 5"
+                    fill="none"
+                    stroke="url(#gradient-line)"
+                    strokeWidth="4"
+                  />
+                  <defs>
+                    <linearGradient id="gradient-line" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor={colors.neon.blue} stopOpacity="0" />
+                      <stop offset="100%" stopColor={colors.neon.green} />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <div className="mt-8">
+                <div className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400 tracking-tighter">
+                  {t('valueProposition.roi.metric')}
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Card 2: Speed (Right Top) */}
+          <BentoCard
+            className="lg:col-span-1 min-h-[250px]"
+            delay={0.2}
+          >
+            <div className="h-full flex flex-col">
+              <div className="flex justify-between items-start mb-4">
+                <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400">
+                  <Zap size={20} />
+                </div>
+                <Activity className="text-gray-600" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.speed.title')}</h3>
+              <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.speed.metric')}</div>
+              <p className="text-gray-400 text-sm mt-auto">{t('valueProposition.speed.description')}</p>
+            </div>
+          </BentoCard>
+
+          {/* Card 3: Custom (Right Bottom) */}
+          <BentoCard
+            className="lg:col-span-1 min-h-[250px]"
+            delay={0.3}
+          >
+            <div className="h-full flex flex-col">
+              <div className="flex justify-between items-start mb-4">
+                <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400">
+                  <Network size={20} />
+                </div>
+                <Cpu className="text-gray-600" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.custom.title')}</h3>
+              <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.custom.metric')}</div>
+              <p className="text-gray-400 text-sm mt-auto">{t('valueProposition.custom.description')}</p>
+            </div>
+          </BentoCard>
         </div>
 
-        <motion.div 
+        {/* CTA */}
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.4 }}
         >
           <NeonButton
             color="blue"
             onClick={handleConsultClick}
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 group"
           >
             {t('cta.consult')}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </NeonButton>
         </motion.div>
       </div>
+    </section>
+  );
+};
 
-      <div 
-        className="absolute inset-0 pointer-events-none"
+// Reusable Bento Card with Spotlight Effect
+const BentoCard: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = "", delay = 0 }) => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const [isFocused, setIsFocused] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const rect = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  return (
+    <motion.div
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsFocused(true)}
+      onMouseLeave={() => setIsFocused(false)}
+      className={`relative rounded-3xl border border-white/10 bg-gray-900/40 p-8 overflow-hidden backdrop-blur-md group ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.5 }}
+    >
+      {/* Spotlight Gradient */}
+      <div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, ${colors.neon.blue}03 1px, transparent 1px),
-            linear-gradient(to bottom, ${colors.neon.blue}03 1px, transparent 1px)
-          `,
-          backgroundSize: '4rem 4rem',
-          mask: 'radial-gradient(circle at 50% 50%, black 40%, transparent)',
-          opacity: 0.1
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
         }}
       />
-    </section>
+
+      {/* Border Gradient on Hover */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(59,130,246,0.1), transparent 40%)`,
+        }}
+      />
+
+      <div className="relative z-10 h-full">
+        {children}
+      </div>
+    </motion.div>
   );
 };
 
