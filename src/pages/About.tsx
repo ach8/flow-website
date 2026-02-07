@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Rocket, Users, Target, Zap, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { colors } from '../utils/colors';
-import AboutBackground from '../components/background/AboutBackground';
 import NeonButton from '../components/ui/NeonButton';
 
 const About: React.FC = () => {
@@ -22,7 +21,6 @@ const About: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <AboutBackground />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
