@@ -75,12 +75,18 @@ const Contact: React.FC = () => {
         'service_n8t2rwd',
         'template_fqmt338',
         {
+          // Variables pour ton template actuel (vu sur screenshot)
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          title: `Message de ${formData.firstName}`, // Pour le sujet {{title}}
+          message: formData.message,
+
+          // Variables de secours/standards
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
           user_name: `${formData.firstName} ${formData.lastName}`,
           user_email: formData.email,
           reply_to: formData.email,
-          message: formData.message,
         },
         'meHFxlBf0cePOYnPj'
       );
