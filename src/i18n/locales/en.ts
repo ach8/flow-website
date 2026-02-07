@@ -191,5 +191,31 @@ export default {
       title: "Ready to Transform Your Business?",
       button: "Schedule a Consultation"
     }
+  },
+  contact: {
+    title: "Contact Us",
+    subtitle: "Ready to scale? Let's talk.",
+    form: {
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Work Email",
+      message: "Your Message",
+      submit: "Send Message",
+      sending: "Sending...",
+      success: "Message sent successfully!",
+      error: "Something went wrong. Please try again."
+    },
+    errors: {
+      firstName: "First name is required",
+      lastName: "Last name is required",
+      email: {
+        required: "Email is required",
+        invalid: "Invalid email format"
+      },
+      message: {
+        required: "Message is required",
+        tooShort: "Message must be at least 10 characters"
+      }
+    }
   }
 };

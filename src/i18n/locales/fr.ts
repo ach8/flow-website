@@ -191,5 +191,31 @@ export default {
       title: "Prêt à Transformer Votre Entreprise ?",
       button: "Planifier une Consultation"
     }
+  },
+  contact: {
+    title: "Contactez-nous",
+    subtitle: "Prêt à transformer votre business ? Discutons-en.",
+    form: {
+      firstName: "Prénom",
+      lastName: "Nom",
+      email: "Email Professionnel",
+      message: "Votre Message",
+      submit: "Envoyer le Message",
+      sending: "Envoi en cours...",
+      success: "Message envoyé avec succès !",
+      error: "Une erreur est survenue. Veuillez réessayer."
+    },
+    errors: {
+      firstName: "Le prénom est requis",
+      lastName: "Le nom est requis",
+      email: {
+        required: "L'email est requis",
+        invalid: "Format d'email invalide"
+      },
+      message: {
+        required: "Le message est requis",
+        tooShort: "Le message doit faire au moins 10 caractères"
+      }
+    }
   }
 }
