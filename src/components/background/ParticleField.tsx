@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { colors } from '../../utils/colors';
 
 interface Particle {
@@ -14,14 +15,23 @@ interface Particle {
 const ParticleField: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
-  const mousePosition = useRef({ x: 0, y: 0 });
+  const animationRef = useRef<number>();
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    // Skip animation entirely if user prefers reduced motion
+    if (shouldReduceMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
+
+    // Detect mobile for even lighter experience
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 15 : 30; // Reduced from 100
+    const connectionDistance = isMobile ? 80 : 100; // Reduced from 150
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -29,107 +39,106 @@ const ParticleField: React.FC = () => {
     };
 
     const createParticles = () => {
-      const particleCount = 100; // Increased particle count
       particles.current = Array.from({ length: particleCount }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1, // Varied particle sizes
-        speedX: (Math.random() - 0.5) * 1.5, // Increased speed
-        speedY: (Math.random() - 0.5) * 1.5,
-        opacity: Math.random() * 0.5 + 0.3, // Varied opacity
-        color: Math.random() > 0.5 ? colors.neon.blue : colors.neon.green // Multiple colors
+        size: Math.random() * 2 + 1,
+        speedX: (Math.random() - 0.5) * 0.5, // Slower movement
+        speedY: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.3 + 0.2,
+        color: Math.random() > 0.5 ? colors.neon.blue : colors.neon.green
       }));
     };
 
     const drawParticle = (particle: Particle) => {
-      if (!ctx) return;
-
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fillStyle = particle.color;
       ctx.globalAlpha = particle.opacity;
       ctx.fill();
-
-      // Add glow effect
-      ctx.shadowBlur = 15;
-      ctx.shadowColor = particle.color;
-      ctx.fill();
-      ctx.shadowBlur = 0;
+      // Removed shadow for performance
     };
 
     const connectParticles = () => {
-      if (!ctx) return;
+      const len = particles.current.length;
+      for (let i = 0; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+          const p1 = particles.current[i];
+          const p2 = particles.current[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distSq = dx * dx + dy * dy;
+          const maxDistSq = connectionDistance * connectionDistance;
 
-      particles.current.forEach((particle1, i) => {
-        particles.current.slice(i + 1).forEach(particle2 => {
-          const dx = particle1.x - particle2.x;
-          const dy = particle1.y - particle2.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 150) { // Increased connection distance
+          if (distSq < maxDistSq) {
+            const distance = Math.sqrt(distSq);
             ctx.beginPath();
-            ctx.strokeStyle = particle1.color;
-            ctx.globalAlpha = (1 - distance / 150) * 0.2;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particle1.x, particle1.y);
-            ctx.lineTo(particle2.x, particle2.y);
+            ctx.strokeStyle = p1.color;
+            ctx.globalAlpha = (1 - distance / connectionDistance) * 0.15;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
-        });
-      });
+        }
+      }
     };
 
-    const animate = () => {
-      if (!ctx || !canvas) return;
+    let lastTime = 0;
+    const targetFPS = 30; // Cap at 30 FPS instead of 60
+    const frameInterval = 1000 / targetFPS;
+
+    const animate = (currentTime: number) => {
+      animationRef.current = requestAnimationFrame(animate);
+
+      const deltaTime = currentTime - lastTime;
+      if (deltaTime < frameInterval) return;
+      lastTime = currentTime - (deltaTime % frameInterval);
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.current.forEach(particle => {
-        // Update position
         particle.x += particle.speedX;
         particle.y += particle.speedY;
 
-        // Mouse interaction
-        const dx = mousePosition.current.x - particle.x;
-        const dy = mousePosition.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 100) {
-          particle.x -= (dx / distance) * 0.5;
-          particle.y -= (dy / distance) * 0.5;
-        }
-
-        // Bounce off edges
-        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+        // Wrap around edges instead of bounce (smoother)
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
 
         drawParticle(particle);
       });
 
       connectParticles();
-      requestAnimationFrame(animate);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePosition.current = {
-        x: e.clientX,
-        y: e.clientY
-      };
     };
 
     resizeCanvas();
     createParticles();
-    animate();
+    animationRef.current = requestAnimationFrame(animate);
 
     window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, []);
+  }, [shouldReduceMotion]);
 
-  return <canvas ref={canvasRef} className="absolute inset-0" />;
+  // Show nothing if reduced motion
+  if (shouldReduceMotion) {
+    return null;
+  }
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="absolute inset-0 pointer-events-none"
+      style={{ willChange: 'contents' }}
+    />
+  );
 };
 
 export default ParticleField;

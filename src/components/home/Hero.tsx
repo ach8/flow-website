@@ -23,50 +23,57 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Dynamic Background */}
-      {/* Dynamic Background - z-0 to sit behind content but with blend mode */}
-      {/* Dynamic Background - Removed local background to match global style */}
-      {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-gray-950 z-0" /> */}
-
-      {/* Animated Particles/Glow - Increased Opacity, Size & Blur for visibility */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/40 rounded-full blur-[120px] mix-blend-screen z-0"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-green-500/40 rounded-full blur-[120px] mix-blend-screen z-0"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 4
-        }}
-      />
+      {/* Simplified glow effects - CSS only, no animation on mobile */}
+      {!shouldReduceMotion ? (
+        <>
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/30 rounded-full blur-[100px] z-0"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{ willChange: 'transform, opacity' }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/30 rounded-full blur-[100px] z-0"
+            animate={{
+              scale: [1.1, 1, 1.1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 5
+            }}
+            style={{ willChange: 'transform, opacity' }}
+          />
+        </>
+      ) : (
+        // Static fallback for reduced motion
+        <>
+          <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[100px] z-0" />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/20 rounded-full blur-[100px] z-0" />
+        </>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Staggered Title Reveal */}
+        {/* Title - simplified animation */}
         <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight flex flex-wrap justify-center gap-x-4 gap-y-2">
           {titleWords.map((word, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 40, rotateX: -90 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
-                delay: i * 0.15,
-                ease: [0.2, 0.65, 0.3, 0.9],
+                duration: 0.5,
+                delay: shouldReduceMotion ? 0 : i * 0.1,
+                ease: "easeOut",
               }}
               className="inline-block"
               style={{
@@ -83,18 +90,18 @@ const Hero: React.FC = () => {
 
         <motion.p
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.5 }}
         >
           {t('hero.subtitle')}
         </motion.p>
 
         <motion.div
           className="flex flex-col sm:flex-row gap-6 justify-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.6 }}
         >
           <div className="flex flex-col gap-3">
             <NeonButton
