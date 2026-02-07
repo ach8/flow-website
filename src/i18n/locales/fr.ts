@@ -3,6 +3,7 @@ export default {
     home: "Accueil",
     about: "À propos",
     services: "Services",
+    blog: "Blog",
     contact: "Contact"
   },
   hero: {
