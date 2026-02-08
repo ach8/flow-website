@@ -6,6 +6,15 @@ import { colors } from '../utils/colors';
 
 const POSTS = [
   {
+    slug: 'kit-automatisation',
+    title: "🎁 Kit Automatisation Express",
+    subtitle: "10 workflows clé-en-main pour gagner 4h/jour. Templates Make, n8n & Zapier inclus.",
+    date: "8 Février 2026",
+    readTime: "Guide gratuit",
+    category: "Lead Magnet",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
     slug: 'etat-ia-2026',
     title: "Le SDR Classique est Mort : Vive l'IA",
     subtitle: "Analyse de 50 agences en 2026. Comment l'automatisation a redistribué les cartes.",
@@ -14,7 +23,6 @@ const POSTS = [
     category: "Stratégie B2B",
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop"
   },
-  // Tu pourras ajouter d'autres articles ici plus tard
 ];
 
 const Blog: React.FC = () => {
