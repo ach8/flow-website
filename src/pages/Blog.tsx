@@ -6,6 +6,15 @@ import { colors } from '../utils/colors';
 
 const POSTS = [
   {
+    slug: 'template-shopify-hubspot',
+    title: "🛒 Template n8n : Shopify → HubSpot",
+    subtitle: "Sync automatique des commandes. Workflow prêt à importer en 1 clic.",
+    date: "8 Février 2026",
+    readTime: "Template gratuit",
+    category: "E-commerce",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop"
+  },
+  {
     slug: 'kit-automatisation',
     title: "🎁 Kit Automatisation Express",
     subtitle: "10 workflows clé-en-main pour gagner 4h/jour. Templates Make, n8n & Zapier inclus.",
