@@ -6,6 +6,15 @@ import { colors } from '../utils/colors';
 
 const POSTS = [
   {
+    slug: 'linkedin-scraper',
+    title: "🔥 Template : Le LinkedIn Scraper Ultime",
+    subtitle: "Scraping + Enrichissement + Vérification. 66 nodes. Le workflow complet.",
+    date: "8 Février 2026",
+    readTime: "Template gratuit",
+    category: "Growth Hacking",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop"
+  },
+  {
     slug: 'template-shopify-hubspot',
     title: "🛒 Template n8n : Shopify → HubSpot",
     subtitle: "Sync automatique des commandes. Workflow prêt à importer en 1 clic.",

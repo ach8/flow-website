@@ -9,6 +9,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import KitAutomatisation from './pages/KitAutomatisation';
 import ShopifyHubspotTemplate from './pages/ShopifyHubspotTemplate';
+import LinkedinScraperTemplate from './pages/LinkedinScraperTemplate';
 import LanguageProvider from './components/language/LanguageProvider';
 import './i18n';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/blog/etat-ia-2026" element={<BlogPost />} />
             <Route path="/blog/kit-automatisation" element={<KitAutomatisation />} />
             <Route path="/blog/template-shopify-hubspot" element={<ShopifyHubspotTemplate />} />
+            <Route path="/blog/linkedin-scraper" element={<LinkedinScraperTemplate />} />
           </Route>
         </Routes>
       </Router>
