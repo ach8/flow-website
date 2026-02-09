@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+const LinkedinScraperTemplate: React.FC = () => {
 
   const handleDownloadJson = async (e: React.MouseEvent) => {
     e.preventDefault();
