@@ -132,13 +132,25 @@ const LinkedinScraperTemplate: React.FC = () => {
                 <p className="text-gray-400 mb-6">
                   Vérifie ta boîte mail (et tes spams au cas où).
                 </p>
-                <a 
-                  href="/templates/linkedin-scraper-pack.zip"
-                  download
-                  className="inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition-colors"
-                >
-                  Téléchargement direct (au cas où)
-                </a>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a 
+                    href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Leads-Scraper-Template.json"
+                    download="LinkedIn-Leads-Scraper-Template.json"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition-colors flex items-center justify-center gap-2"
+                  >
+                    📥 Télécharger le JSON
+                  </a>
+                  <a 
+                    href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/Guide-Installation-LinkedIn-Scraper.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-6 py-3 bg-gray-700 text-white font-bold rounded-lg hover:bg-gray-600 transition-colors flex items-center justify-center gap-2"
+                  >
+                    📖 Lire le Guide PDF
+                  </a>
+                </div>
               </div>
             )}
           </div>
