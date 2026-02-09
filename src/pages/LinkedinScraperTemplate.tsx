@@ -56,13 +56,38 @@ const LinkedinScraperTemplate: React.FC = () => {
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mb-16 rounded-xl overflow-hidden border border-gray-700 shadow-2xl"
+          className="relative mb-16 group max-w-5xl mx-auto"
         >
-          <img 
-            src="/images/linkedin-scraper-workflow.jpg" 
-            alt="Workflow n8n de scraping LinkedIn complet"
-            className="w-full h-auto object-cover"
-          />
+          {/* Glow effect arrière */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+          
+          {/* Conteneur image style fenêtre */}
+          <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#0f1115]">
+            {/* Header fenêtre */}
+            <div className="h-10 bg-white/5 border-b border-white/5 flex items-center px-4 space-x-2 backdrop-blur-sm">
+              <div className="flex space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
+              </div>
+              <div className="flex-1 text-center pr-12">
+                <span className="text-xs text-gray-500 font-mono bg-black/30 px-3 py-1 rounded-full border border-white/5">
+                  Main Workflow.json
+                </span>
+              </div>
+            </div>
+            
+            {/* Image */}
+            <div className="relative">
+              <img 
+                src="/images/linkedin-scraper-workflow.jpg" 
+                alt="Workflow n8n de scraping LinkedIn complet"
+                className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              {/* Reflet subtil */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Ce que ça fait */}
