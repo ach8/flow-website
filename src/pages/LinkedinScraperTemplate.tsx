@@ -41,7 +41,7 @@ const LinkedinScraperTemplate: React.FC = () => {
             🎁 Template n8n Gratuit
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-            Le Système de Scraping LinkedIn Ultime
+            Le Système d'Acquisition LinkedIn Ultime
             <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
               66 Nodes • 100% Automatisé
@@ -72,7 +72,7 @@ const LinkedinScraperTemplate: React.FC = () => {
               </div>
               <div className="flex-1 text-center pr-12">
                 <span className="text-xs text-gray-500 font-mono bg-black/30 px-3 py-1 rounded-full border border-white/5">
-                  Main Workflow.json
+                  LinkedIn-Growth-System.json
                 </span>
               </div>
             </div>
@@ -97,24 +97,24 @@ const LinkedinScraperTemplate: React.FC = () => {
           transition={{ delay: 0.2 }}
           className="mb-12"
         >
-          <h2 className="text-2xl font-bold text-white mb-6">⚡ Ce que fait ce robot</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">⚡ Puissance du Système</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-              <h3 className="text-lg font-bold text-white mb-2">1. Scrape en Masse</h3>
-              <p className="text-sm text-gray-400">Il extrait les profils LinkedIn basés sur tes critères (ex: "CEO SaaS Paris") sans se faire bloquer.</p>
+              <h3 className="text-lg font-bold text-white mb-2">1. Extraction Ciblée</h3>
+              <p className="text-sm text-gray-400">Il identifie et extrait les profils LinkedIn ultra-qualifiés (ex: "CEO SaaS Paris") tout en respectant les limites de la plateforme.</p>
             </div>
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-              <h3 className="text-lg font-bold text-white mb-2">2. Enrichit les Données</h3>
-              <p className="text-sm text-gray-400">Il trouve l'email pro vérifié, le numéro de téléphone et les infos entreprise automatiquement.</p>
+              <h3 className="text-lg font-bold text-white mb-2">2. Enrichissement & Contact</h3>
+              <p className="text-sm text-gray-400">Il croise les bases de données pour trouver l'email pro vérifié, le numéro de téléphone et les infos entreprise.</p>
             </div>
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-              <h3 className="text-lg font-bold text-white mb-2">3. Nettoie & Vérifie</h3>
-              <p className="text-sm text-gray-400">Il supprime les doublons et vérifie la validité des emails pour protéger ta délivrabilité.</p>
+              <h3 className="text-lg font-bold text-white mb-2">3. Hygiène des Données</h3>
+              <p className="text-sm text-gray-400">Il dédoublonne les entrées et valide la délivrabilité des emails en temps réel. Zéro bounce.</p>
             </div>
             <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-              <h3 className="text-lg font-bold text-white mb-2">4. Exporte Proprement</h3>
-              <p className="text-sm text-gray-400">Tu reçois tout dans un Google Sheet structuré, prêt pour ta campagne de Cold Email.</p>
+              <h3 className="text-lg font-bold text-white mb-2">4. Export Prêt-à-l'emploi</h3>
+              <p className="text-sm text-gray-400">Tu reçois un fichier Google Sheet parfaitement structuré, directement exploitable pour tes campagnes de Cold Email.</p>
             </div>
           </div>
         </motion.div>
