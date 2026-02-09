@@ -58,10 +58,11 @@ const LinkedinScraperTemplate: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="mb-16 rounded-xl overflow-hidden border border-gray-700 shadow-2xl"
         >
-          {/* Placeholder pour screenshot du workflow n8n */}
-          <div className="bg-gray-800 h-64 flex items-center justify-center text-gray-500">
-            [Screenshot du Workflow n8n aux 66 nodes ici]
-          </div>
+          <img 
+            src="/images/linkedin-scraper-workflow.jpg" 
+            alt="Workflow n8n de scraping LinkedIn complet"
+            className="w-full h-auto object-cover"
+          />
         </motion.div>
 
         {/* Ce que ça fait */}
