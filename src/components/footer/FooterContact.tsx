@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
 import { colors } from '../../utils/colors';
@@ -13,14 +14,14 @@ const FooterContact: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <a 
-          href="mailto:ach@flowaicom.com" 
+        <Link 
+          to="/contact" 
           className="flex items-center gap-2 hover:text-blue-400 transition-colors"
-          style={{ '--hover-color': colors.neon.blue }}
+          style={{ '--hover-color': colors.neon.blue } as any}
         >
           <Mail size={16} />
-          ach@flowaicom.com
-        </a>
+          Contacter par email
+        </Link>
         <a 
           href="tel:+33767515497" 
           className="flex items-center gap-2 hover:text-blue-400 transition-colors"

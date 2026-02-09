@@ -15,7 +15,7 @@ const FooterNavigation: React.FC = () => {
 
   return (
     <div>
-      <h4 className="text-white font-semibold mb-4">{t('nav.navigation')}</h4>
+      <h4 className="text-white font-semibold mb-4">Navigation</h4>
       <ul className="space-y-2">
         {links.map((link) => (
           <motion.li key={link.to} whileHover={{ x: 5 }}>
