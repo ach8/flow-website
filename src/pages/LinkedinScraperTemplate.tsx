@@ -3,18 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const LinkedinScraperTemplate: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    // Simuler un envoi API
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setLoading(false);
-  };
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-gray-900 text-gray-300 leading-relaxed">
@@ -91,68 +79,36 @@ const LinkedinScraperTemplate: React.FC = () => {
           className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-1 mb-16"
         >
           <div className="bg-gray-900 rounded-xl p-8 md:p-12 text-center">
-            {!submitted ? (
-              <>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  📥 Télécharger le Template JSON + Guide PDF
-                </h2>
-                <p className="text-gray-400 mb-8">
-                  Reçois le fichier `.json` à importer dans n8n et le guide d'installation étape par étape.
-                </p>
-                
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="ton@email-pro.com"
-                      required
-                      className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                    />
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition-all disabled:opacity-50"
-                    >
-                      {loading ? 'Envoi...' : 'Recevoir maintenant 🚀'}
-                    </button>
-                  </div>
-                </form>
-                <p className="text-gray-500 text-xs mt-4">
-                  100% gratuit. Désabonnement en 1 clic.
-                </p>
-              </>
-            ) : (
-              <div className="py-8">
-                <div className="text-5xl mb-4">✅</div>
-                <h2 className="text-2xl font-bold text-white mb-4">
-                  C'est envoyé !
-                </h2>
-                <p className="text-gray-400 mb-6">
-                  Vérifie ta boîte mail (et tes spams au cas où).
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a 
-                    href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Leads-Scraper-Template.json"
-                    download="LinkedIn-Leads-Scraper-Template.json"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-400 transition-colors flex items-center justify-center gap-2"
-                  >
-                    📥 Télécharger le JSON
-                  </a>
-                  <a 
-                    href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/Guide-Installation-LinkedIn-Scraper.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 bg-gray-700 text-white font-bold rounded-lg hover:bg-gray-600 transition-colors flex items-center justify-center gap-2"
-                  >
-                    📖 Lire le Guide PDF
-                  </a>
-                </div>
+            <div className="py-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+                📥 Télécharger le Pack Complet
+              </h2>
+              <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Voici les fichiers promis. Télécharge le template JSON pour n8n et le guide d'installation pour démarrer en 5 minutes.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Leads-Scraper-Template.json"
+                  download="LinkedIn-Leads-Scraper-Template.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 hover:scale-105 flex items-center justify-center gap-3"
+                >
+                  📥 Télécharger le JSON
+                </a>
+                <a 
+                  href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/Guide-Installation-LinkedIn-Scraper.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-gray-700 text-white font-bold rounded-xl hover:bg-gray-600 transition-all hover:scale-105 flex items-center justify-center gap-3"
+                >
+                  📖 Lire le Guide PDF
+                </a>
               </div>
-            )}
+              <p className="text-gray-500 text-sm mt-8">
+                Besoin d'aide pour l'installer ? <Link to="/contact" className="text-blue-400 hover:text-blue-300 underline">Contacte-nous</Link>.
+              </p>
+            </div>
           </div>
         </motion.div>
 
