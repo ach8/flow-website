@@ -2,7 +2,28 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const LinkedinScraperTemplate: React.FC = () => {
+  const handleDownloadJson = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const url = "https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Leads-Scraper-Template.json";
+    
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = "LinkedIn-Leads-Scraper-Template.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Erreur téléchargement:", error);
+      // Fallback si le JS échoue
+      window.open(url, '_blank');
+    }
+  };
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-gray-900 text-gray-300 leading-relaxed">
@@ -87,15 +108,12 @@ const LinkedinScraperTemplate: React.FC = () => {
                 Voici les fichiers promis. Télécharge le template JSON pour n8n et le guide d'installation pour démarrer en 5 minutes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Leads-Scraper-Template.json"
-                  download="LinkedIn-Leads-Scraper-Template.json"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 hover:scale-105 flex items-center justify-center gap-3"
+                <button 
+                  onClick={handleDownloadJson}
+                  className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 hover:scale-105 flex items-center justify-center gap-3 cursor-pointer"
                 >
                   📥 Télécharger le JSON
-                </a>
+                </button>
                 <a 
                   href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/Guide-Installation-LinkedIn-Scraper.pdf"
                   target="_blank"
