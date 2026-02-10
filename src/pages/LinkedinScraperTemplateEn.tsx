@@ -27,6 +27,28 @@ const LinkedinScraperTemplateEn: React.FC = () => {
     }
   };
 
+  const handleDownloadPdf = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    const url = "https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Scraper-Guide-EN.pdf";
+    
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = "LinkedIn-Scraper-Guide-EN.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("PDF Download error:", error);
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <div className="min-h-screen pt-32 pb-20 bg-gray-900 text-gray-300 leading-relaxed">
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,14 +164,12 @@ const LinkedinScraperTemplateEn: React.FC = () => {
                 >
                   📥 Download JSON
                 </button>
-                <a 
-                  href="https://lxsjjfsgyfoesrqeyift.supabase.co/storage/v1/object/public/flow-drive/LinkedIn-Scraper-Guide-EN.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-4 bg-gray-700 text-white font-bold rounded-xl hover:bg-gray-600 transition-all hover:scale-105 flex items-center justify-center gap-3"
+                <button 
+                  onClick={handleDownloadPdf}
+                  className="px-8 py-4 bg-gray-700 text-white font-bold rounded-xl hover:bg-gray-600 transition-all hover:scale-105 flex items-center justify-center gap-3 cursor-pointer"
                 >
                   📖 Read PDF Guide
-                </a>
+                </button>
               </div>
               <p className="text-gray-500 text-sm mt-8">
                 Need help installing? <Link to="/contact" className="text-blue-400 hover:text-blue-300 underline">Contact us</Link>.
