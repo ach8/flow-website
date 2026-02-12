@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket, Users, Target, Zap, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO'; // Import SEO component
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
 
@@ -21,7 +22,10 @@ const About: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      
+      <SEO 
+        title={t('about.hero.title')}
+        description={t('about.hero.subtitle')}
+      />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <motion.div

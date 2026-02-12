@@ -7,6 +7,7 @@ import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
 import NeonInput from '../components/ui/NeonInput';
 import NeonTextarea from '../components/ui/NeonTextarea';
+import SEO from '../components/SEO'; // Import SEO component
 
 interface FormData {
   firstName: string;
@@ -133,6 +134,10 @@ const Contact: React.FC = () => {
 
   return (
     <div className="min-h-screen py-20">
+      <SEO 
+        title={t('nav.contact')}
+        description={t('contact.subtitle')}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

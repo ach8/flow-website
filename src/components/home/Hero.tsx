@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank');
+    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
   };
 
   const handleLearnMoreClick = () => {

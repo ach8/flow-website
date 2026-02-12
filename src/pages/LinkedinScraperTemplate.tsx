@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO'; // Import SEO component
 
 const LinkedinScraperTemplate: React.FC = () => {
 
@@ -23,7 +24,7 @@ const LinkedinScraperTemplate: React.FC = () => {
     } catch (error) {
       console.error("Erreur téléchargement:", error);
       // Fallback si le JS échoue
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -45,12 +46,17 @@ const LinkedinScraperTemplate: React.FC = () => {
       window.URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error("Erreur téléchargement PDF:", error);
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
   return (
     <div className="min-h-screen pt-32 pb-20 bg-gray-900 text-gray-300 leading-relaxed">
+      <SEO 
+        title="Template n8n : Scraper LinkedIn Gratuit & Automatisé"
+        description="Génère 800+ leads par semaine gratuitement avec ce workflow n8n. Télécharge le template JSON pour scraper LinkedIn automatiquement."
+        keywords="n8n, scraping, linkedin, automatisation, lead generation, workflow, template"
+      />
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

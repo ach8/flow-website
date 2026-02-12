@@ -6,6 +6,7 @@ import { MessageSquare, Users, Mail, Database, Mic, Share2, ArrowRight, Check } 
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
 import Breadcrumb from '../components/ui/Breadcrumb';
+import SEO from '../components/SEO'; // Import SEO component
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
@@ -19,7 +20,7 @@ const Services: React.FC = () => {
   }, [fromHero]);
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank');
+    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
   };
 
   const services = [
@@ -51,6 +52,10 @@ const Services: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO 
+        title={t('nav.services')}
+        description={t('services.overview.subtitle')}
+      />
       {/* Breadcrumb Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Breadcrumb items={[{ label: t('nav.services'), href: '/services' }]} />

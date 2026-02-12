@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '../components/home/Hero';
+import SEO from '../components/SEO'; // Import SEO component
 import { colors } from '../utils/colors';
 
 // Lazy load non-critical sections
@@ -23,6 +24,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="relative">
+      <SEO 
+        title="Home" 
+        description="Transform your business with AI-powered automation solutions. Chatbots, lead generation, CRM integration, and more."
+      />
       {/* Consistent background elements */}
       <div 
         className="fixed inset-0 bg-gradient-to-b from-gray-950 to-gray-900" 

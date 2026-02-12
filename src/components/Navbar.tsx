@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
   ];
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank');
+    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
   };
 
   useEffect(() => {

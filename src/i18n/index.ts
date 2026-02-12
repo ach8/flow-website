@@ -17,10 +17,11 @@ i18n
       },
     },
     fallbackLng: 'fr',
-    lng: 'fr', // Set initial language to French
+    // Remove lng: 'fr' to enable auto-detection
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['querystring', 'localStorage', 'navigator'],
       caches: ['localStorage'],
+      lookupQuerystring: 'lang',
     },
     interpolation: {
       escapeValue: false,
