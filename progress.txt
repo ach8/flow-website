@@ -1,0 +1,11 @@
+# Progress Log
+Run: 515894ee-c580-4d34-bc3c-c3f7c2f3c280
+Task: Optimize flow-website repo: 1. Add react-helmet-async for dynamic SEO meta tags on all pages. 2. Implement auto-language detection (i18next-browser-languagedetector) using navigator and localstorage (no paid API). 3. Audit and fix security issues (add rel='noopener noreferrer' to all target='_blank' links).
+Started: 2026-02-12T01:27:00Z
+
+## Codebase Patterns
+- Testing: Uses Vitest with React Testing Library. Run via `npm run test`.
+- Types: TypeScript config split into `tsconfig.app.json` and `tsconfig.node.json`.
+- Linting: ESLint config in `eslint.config.js`.
+
+---
