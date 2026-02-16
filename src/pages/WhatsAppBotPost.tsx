@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, CheckCircle, ExternalLink, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Download, MessageCircle, FileJson, FileText } from 'lucide-react';
 import { useLanguageDetection } from '../hooks/useLanguageDetection';
-import CaptureForm from '../components/blog/CaptureForm';
 
 const WhatsAppBotPost: React.FC = () => {
   const { currentLanguage: language, changeLanguage: setManualLanguage } = useLanguageDetection();
@@ -157,14 +156,46 @@ const WhatsAppBotPost: React.FC = () => {
           ))}
         </div>
 
-        {/* Download Section (Lead Magnet) */}
-        <div className="mb-20">
-          <CaptureForm 
-            title={t.downloadTitle}
-            subtitle={t.downloadSubtitle}
-            magnetId="WHATSAPP-AGENT-2026"
-          />
-        </div>
+        {/* Download Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-20 bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-cyan-500/30 rounded-2xl p-8 md:p-12 text-center shadow-[0_0_40px_rgba(6,182,212,0.1)]"
+        >
+          <h2 className="text-3xl font-bold text-white mb-3">
+            {t.downloadTitle}
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+            {t.downloadSubtitle}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={isEn 
+                ? "https://drive.google.com/file/d/1sOK4yIXC76Mk9Gz3_QB1i26xyWjPcB6Z/view?usp=drivesdk"
+                : "https://drive.google.com/file/d/1-CO0nsHzvx21sK74NAvxucB03IUIZvHm/view?usp=drivesdk"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-4 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-cyan-500/25"
+            >
+              <FileJson className="w-6 h-6" />
+              {isEn ? "Download Workflow (JSON)" : "Télécharger le Workflow (JSON)"}
+            </a>
+            <a
+              href={isEn
+                ? "https://drive.google.com/file/d/1qYVs1YxRxUQokrEqR_4bq9msQrFSWPRZ/view?usp=drivesdk"
+                : "https://drive.google.com/file/d/1gLqe1s5XY-LQGGhwCaOb0eiqFihKT1gy/view?usp=drivesdk"
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-4 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-xl transition-all hover:scale-105 border border-gray-600"
+            >
+              <FileText className="w-6 h-6" />
+              {isEn ? "Download Guide (PDF)" : "Télécharger le Guide (PDF)"}
+            </a>
+          </div>
+        </motion.div>
 
         {/* Footer */}
         <div className="border-t border-gray-800 pt-8 flex justify-between items-center">
