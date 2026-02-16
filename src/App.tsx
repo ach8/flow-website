@@ -12,6 +12,7 @@ import KitAutomatisation from './pages/KitAutomatisation';
 import ShopifyHubspotTemplate from './pages/ShopifyHubspotTemplate';
 import LinkedinScraperTemplate from './pages/LinkedinScraperTemplate';
 import LinkedinScraperTemplateEn from './pages/LinkedinScraperTemplateEn';
+import WhatsAppBotPost from './pages/WhatsAppBotPost';
 import LanguageProvider from './components/language/LanguageProvider';
 import './i18n';
 
@@ -32,6 +33,7 @@ function App() {
               <Route path="/blog/template-shopify-hubspot" element={<ShopifyHubspotTemplate />} />
               <Route path="/blog/linkedin-scraper" element={<LinkedinScraperTemplate />} />
               <Route path="/blog/linkedin-scraper-en" element={<LinkedinScraperTemplateEn />} />
+              <Route path="/blog/whatsapp-ai-agent" element={<WhatsAppBotPost />} />
             </Route>
           </Routes>
         </Router>

@@ -6,6 +6,15 @@ import { colors } from '../utils/colors';
 
 const POSTS = [
   {
+    slug: 'whatsapp-ai-agent',
+    title: "🤖 Agent WhatsApp IA : Support Client Automatisé",
+    subtitle: "Workflow n8n complet + Guide. Scrape votre site et répond 24/7.",
+    date: "17 Février 2026",
+    readTime: "Template Gratuit",
+    category: "Tutoriel Technique",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop"
+  },
+  {
     slug: 'linkedin-scraper',
     title: "🔥 Template : Le LinkedIn Scraper Ultime",
     subtitle: "Scraping + Enrichissement + Vérification. 66 nodes. Le workflow complet.",
