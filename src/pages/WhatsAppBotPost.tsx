@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, CheckCircle, ExternalLink, MessageCircle } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguageDetection';
+import { useLanguageDetection } from '../hooks/useLanguageDetection';
 import CaptureForm from '../components/blog/CaptureForm';
 
 const WhatsAppBotPost: React.FC = () => {
-  const { language, setManualLanguage } = useLanguage();
+  const { currentLanguage: language, changeLanguage: setManualLanguage } = useLanguageDetection();
   const isEn = language === 'en';
 
   const content = {
