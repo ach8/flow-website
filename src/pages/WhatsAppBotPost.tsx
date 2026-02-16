@@ -172,11 +172,10 @@ const WhatsAppBotPost: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={isEn 
-                ? "https://drive.google.com/file/d/1sOK4yIXC76Mk9Gz3_QB1i26xyWjPcB6Z/view?usp=drivesdk"
-                : "https://drive.google.com/file/d/1-CO0nsHzvx21sK74NAvxucB03IUIZvHm/view?usp=drivesdk"
+                ? "/downloads/whatsapp-ai-assistant-EN.json"
+                : "/downloads/whatsapp-ai-assistant-FR.json"
               }
-              target="_blank"
-              rel="noopener noreferrer"
+              download
               className="inline-flex items-center gap-3 px-6 py-4 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-xl transition-all hover:scale-105 shadow-lg shadow-cyan-500/25"
             >
               <FileJson className="w-6 h-6" />
@@ -184,15 +183,14 @@ const WhatsAppBotPost: React.FC = () => {
             </a>
             <a
               href={isEn
-                ? "https://drive.google.com/file/d/1qYVs1YxRxUQokrEqR_4bq9msQrFSWPRZ/view?usp=drivesdk"
-                : "https://drive.google.com/file/d/1gLqe1s5XY-LQGGhwCaOb0eiqFihKT1gy/view?usp=drivesdk"
+                ? "/downloads/GUIDE_INSTALLATION_EN.md"
+                : "/downloads/GUIDE_INSTALLATION_FR.md"
               }
-              target="_blank"
-              rel="noopener noreferrer"
+              download
               className="inline-flex items-center gap-3 px-6 py-4 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-xl transition-all hover:scale-105 border border-gray-600"
             >
               <FileText className="w-6 h-6" />
-              {isEn ? "Download Guide (PDF)" : "Télécharger le Guide (PDF)"}
+              {isEn ? "Download Guide" : "Télécharger le Guide"}
             </a>
           </div>
         </motion.div>

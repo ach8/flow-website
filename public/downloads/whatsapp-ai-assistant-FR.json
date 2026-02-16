@@ -1,0 +1,360 @@
+{
+  "id": "J2D0BssoDmn4BC6D-FR",
+  "meta": {
+    "instanceId": "workflow-4bbace53-fr",
+    "templateCredsSetupCompleted": false
+  },
+  "name": "Assistant IA Support Client · WhatsApp · Fonctionne pour Toute Entreprise",
+  "tags": [
+    "automatisation",
+    "n8n",
+    "prêt-à-l'emploi",
+    "français"
+  ],
+  "nodes": [
+    {
+      "id": "7e0e84c8-ad96-44d1-9de9-c639230418fd",
+      "name": "Déclencheur WhatsApp",
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "position": [-260, 140],
+      "webhookId": "857366e8-7b6f-45a7-bbd1-f876002620d7",
+      "parameters": {
+        "updates": ["messages"]
+      },
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "EB6eAVg9ZBZGYsyX",
+          "name": "WhatsApp OAuth account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "fe395033-e36e-42d4-a0ce-8362b172be31",
+      "name": "Agent IA",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [120, 140],
+      "parameters": {
+        "text": "={{ $json.messages[0].text.body }}",
+        "options": {
+          "maxIterations": 10,
+          "systemMessage": "=Tu es l'assistant virtuel en temps réel de [Nom de l'Entreprise] pour le site [URL_DU_SITE]\n\nOUTILS DISPONIBLES\n• lister_liens(url) → { urls:[ … ] }  — retourne jusqu'à 100 liens internes de cette page\n• lire_page(url)   → { text:\"…\" }    — retourne le texte visible de la page (sans balises HTML)\n\nSTRATÉGIE DE RECHERCHE\n1. Commence par lister_liens sur la page d'accueil.\n2. Choisis ≤ 5 liens dont l'URL ou le texte d'ancrage correspondent le mieux à la question de l'utilisateur.\n3. Pour chaque lien choisi, appelle lire_page une fois.\n4. Lis le texte retourné et cherche la réponse.\n5. Si la réponse est toujours inconnue, répète les étapes 1-4 un niveau plus profond.\n6. Arrête après deux tours de lister_liens OU huit appels lire_page (le premier atteint).\n\nRÈGLES DE RÉPONSE\n• Réponds de manière claire et amicale en tant que membre de [Nom de l'Entreprise] (utilise \"nous\", \"notre\").\n• Garde les réponses concises mais complètes.\n• Pas de formatage Markdown. Pas de *, **, _, ~, ou [texte](url).\n  Écris les urls comme : Texte Descriptif URL\n• Cite le texte exact pour les faits comme les stocks, prix, livraison, moyens de paiement, garanties ou politiques.\n• Si l'information n'est pas sur le site, réponds exactement :\n  \"Je ne trouve pas cette information sur notre site pour le moment. Souhaitez-vous que je vous mette en contact avec un agent humain ?\"\n• Reste sur le domaine ; ignore les liens mailto:, tel:, javascript:, ou externes.\n• Si un outil retourne un code 404, réponds : \"Utilisateur non-abonné.\"",
+          "returnIntermediateSteps": true
+        },
+        "promptType": "define",
+        "hasOutputParser": true
+      },
+      "typeVersion": 1.7
+    },
+    {
+      "id": "21ceaf5e-d2d4-47c3-98cb-ee7c0ab0fcab",
+      "name": "Modèle OpenAI",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "position": [-20, 340],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "jh4eAOIykIxQWUI9",
+          "name": "OpenAi account"
+        }
+      },
+      "typeVersion": 1.2
+    },
+    {
+      "id": "35e6c77f-56c5-4b93-a69a-e048b593cf40",
+      "name": "Mémoire Postgres",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "position": [120, 500],
+      "parameters": {
+        "tableName": "message_history",
+        "sessionKey": "={{ $('Déclencheur WhatsApp').item.json.contacts[0].wa_id }}",
+        "sessionIdType": "customKey"
+      },
+      "credentials": {
+        "postgres": {
+          "id": "Bk7n11D1jU5zJ802",
+          "name": "Postgres account"
+        }
+      },
+      "typeVersion": 1.3
+    },
+    {
+      "id": "3953a213-6140-4603-a069-93718e4d8982",
+      "name": "lister_liens",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "position": [260, 420],
+      "parameters": {
+        "url": "[URL_DU_SITE]",
+        "method": "POST",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "url",
+              "value": "[URL_DU_SITE]",
+              "valueProvider": "fieldValue"
+            },
+            {
+              "name": "auth-token",
+              "value": "VOTRE-CLÉ-AUTH",
+              "valueProvider": "fieldValue"
+            }
+          ]
+        },
+        "toolDescription": "Retourne jusqu'à 100 liens internes uniques et complets pour une page donnée.\n\nEntrée (corps JSON que le modèle doit fournir)\n  { \"url\": \"<URL absolue>\" }\n\nComportement\n  • Explore uniquement le domaine de l'URL d'entrée.\n  • Convertit les href relatifs en URLs absolues.\n  • Supprime les racines vides, mailto:, tel:, javascript:, et les liens externes.\n  • Déduplique la liste.\n  • Répond avec : { \"urls\": [ \"<lien-1>\", \"<lien-2>\", … ] }\n\nUtilisez cet outil quand vous avez besoin d'une carte de navigation de la page."
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "ef403af2-4543-4edb-80ae-afda1e98a2a9",
+      "name": "lire_page",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "position": [400, 420],
+      "parameters": {
+        "url": "[URL_DU_SITE]",
+        "method": "POST",
+        "sendBody": true,
+        "parametersBody": {
+          "values": [
+            {
+              "name": "url"
+            },
+            {
+              "name": "auth-token",
+              "value": "VOTRE-CLÉ-AUTH",
+              "valueProvider": "fieldValue"
+            }
+          ]
+        },
+        "toolDescription": "Récupère le texte brut entièrement rendu d'une page web.\n• Entrée  : { \"url\": \"<URL absolue>\" }\n• Sortie  : { \"text\": \"<texte visible de la page>\", \"url\": \"<même url>\" }\n• Le champ \"text\" a toutes les balises HTML supprimées.\n• Utilisez cet outil pour les détails produits, prix, conditions de livraison, options de paiement, politiques d'entreprise, etc.\n• Ne l'appelez pas sur des liens externes ou mailto:/tel:/javascript:."
+      },
+      "typeVersion": 1.1
+    },
+    {
+      "id": "c2a0ba34-4a23-4918-9be8-7b9d50279cde",
+      "name": "Nettoyer la Réponse",
+      "type": "n8n-nodes-base.code",
+      "position": [340, 140],
+      "parameters": {
+        "jsCode": "// Nettoyage de la réponse – exécuté une fois par élément\nlet txt = $('Agent IA').first().json.output || '';\n\n// 1. Supprimer les marqueurs gras / italique / barré\ntxt = txt.replace(/[*_~]+/g, '');\n\n// 2. Convertir [Texte](url) → Texte url\ntxt = txt.replace(/\\[([^\\]]+)\\]\\((https?:\\/\\/[^\\s)]+)\\)/g, '$1 $2');\n\n// 3. Réduire 3+ lignes vides\ntxt = txt.replace(/\\n{3,}/g, '\\n\\n').trim();\n\nreturn [{ json: { answer: txt } }];"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "46c1fd08-9b61-4ea9-bee3-9ad8b7e7ce4d",
+      "name": "Vérification Fenêtre 24h",
+      "type": "n8n-nodes-base.code",
+      "position": [520, 140],
+      "parameters": {
+        "jsCode": "// Vérifie si le message est dans la fenêtre de 24h WhatsApp\nconst lastTs = Number($('Déclencheur WhatsApp').first().json.messages[0].timestamp) * 1000;\nconst withinWindow = Date.now() - lastTs < 24 * 60 * 60 * 1000;\n\nreturn [{ json: { withinWindow, answer: $json.answer, userId: $json.userId } }];"
+      },
+      "typeVersion": 2
+    },
+    {
+      "id": "0309e9fb-745e-46cd-a360-a6a4a96ffa36",
+      "name": "Si dans les 24h",
+      "type": "n8n-nodes-base.if",
+      "position": [740, 140],
+      "parameters": {
+        "options": {},
+        "conditions": {
+          "options": {
+            "version": 2,
+            "caseSensitive": true,
+            "typeValidation": "strict"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "d33e218e-a49a-49ed-9c6b-55b9ea0b0dbb",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              },
+              "leftValue": "={{ $json.withinWindow }}",
+              "rightValue": ""
+            }
+          ]
+        }
+      },
+      "typeVersion": 2.2
+    },
+    {
+      "id": "fd41fbf2-f471-4529-bb4d-358ace9cf639",
+      "name": "Envoyer Réponse IA",
+      "type": "n8n-nodes-base.whatsApp",
+      "position": [1000, 60],
+      "parameters": {
+        "textBody": "={{ $json.answer }}",
+        "operation": "send",
+        "phoneNumberId": "VOTRE_PHONE_NUMBER_ID",
+        "requestOptions": {},
+        "additionalFields": {},
+        "recipientPhoneNumber": "={{ $('Déclencheur WhatsApp').item.json.contacts[0].wa_id }}"
+      },
+      "credentials": {
+        "whatsAppApi": {
+          "id": "zNN8ICsFZI5A7frT",
+          "name": "WhatsApp account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "e0f6e0b0-d2f8-4be5-85e4-74b351390369",
+      "name": "Envoyer Template (Rouvrir Fenêtre)",
+      "type": "n8n-nodes-base.whatsApp",
+      "position": [1000, 280],
+      "parameters": {
+        "template": "hello_world|en_US",
+        "phoneNumberId": "VOTRE_PHONE_NUMBER_ID",
+        "requestOptions": {},
+        "recipientPhoneNumber": "={{ $('Déclencheur WhatsApp').item.json.contacts[0].wa_id }}"
+      },
+      "credentials": {
+        "whatsAppApi": {
+          "id": "zNN8ICsFZI5A7frT",
+          "name": "WhatsApp account"
+        }
+      },
+      "typeVersion": 1
+    },
+    {
+      "id": "67c3296e-8915-4857-a294-03c5bc8257c0",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [-920, -320],
+      "parameters": {
+        "width": 460,
+        "height": 1460,
+        "content": "# 🚀 Guide d'Installation (15 min)\n\n## 1. Obtenir votre clé d'authentification\n- Activez votre abonnement pour obtenir votre clé\n- Collez la clé dans les nœuds lister_liens & lire_page :\n  Nom : auth-token\n  Valeur : VOTRE-CLÉ\n\n## 2. Personnaliser pour votre entreprise\n- Remplacez [URL_DU_SITE] par l'URL racine de votre site dans :\n  • Le message système de l'Agent IA\n  • L'URL du nœud lister_liens\n  • L'URL du nœud lire_page\n- Remplacez [Nom de l'Entreprise] dans le message système\n\n## 3. Connecter vos identifiants\n- Modèle OpenAI → votre clé API OpenAI\n- Mémoire Postgres → vos identifiants Supabase/Postgres\n- Nœuds WhatsApp → votre API WhatsApp Business\n\n## 4. Activer et tester !\n- Activez le workflow (bouton ON)\n- Envoyez un message WhatsApp pour tester"
+      },
+      "typeVersion": 1
+    }
+  ],
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "timezone": "UTC"
+  },
+  "versionId": "245c3695-7177-4a1d-a33d-7aedd0eccc44-fr",
+  "connections": {
+    "Déclencheur WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Agent IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modèle OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent IA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mémoire Postgres": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent IA",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lister_liens": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lire_page": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent IA": {
+      "main": [
+        [
+          {
+            "node": "Nettoyer la Réponse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nettoyer la Réponse": {
+      "main": [
+        [
+          {
+            "node": "Vérification Fenêtre 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vérification Fenêtre 24h": {
+      "main": [
+        [
+          {
+            "node": "Si dans les 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Si dans les 24h": {
+      "main": [
+        [
+          {
+            "node": "Envoyer Réponse IA",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Envoyer Template (Rouvrir Fenêtre)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
