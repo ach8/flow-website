@@ -5,10 +5,11 @@ import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO'; // Import SEO component
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
+import { ParticlesBackground } from '../components/ui/ParticlesBackground';
 
 const About: React.FC = () => {
   const { t } = useTranslation();
-  
+
   const handleConsultClick = () => {
     window.open('https://calendly.com/achraf-farhat98/consultation', '_blank');
   };
@@ -22,10 +23,11 @@ const About: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <SEO 
+      <SEO
         title={t('about.hero.title')}
         description={t('about.hero.subtitle')}
       />
+      <ParticlesBackground />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <motion.div
@@ -57,7 +59,7 @@ const About: React.FC = () => {
 
       {/* Content Sections */}
       <div className="relative">
-        {t<any>('about.sections', { returnObjects: true }).map((section: any, index: number) => (
+        {(t('about.sections', { returnObjects: true }) as any[]).map((section: any, index: number) => (
           <motion.section
             key={index}
             className="py-24 relative"
@@ -94,10 +96,10 @@ const About: React.FC = () => {
                   >
                     {icons[index as keyof typeof icons]}
                   </motion.div>
-                  
+
                   <h2 className="text-4xl md:text-5xl font-bold mb-8">{section.title}</h2>
                 </div>
-                
+
                 {/* Section Content */}
                 <div className="max-w-5xl mx-auto">
                   {section.content.split('\n\n').map((paragraph: string, i: number) => (

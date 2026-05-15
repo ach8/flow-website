@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import Hero from '../components/home/Hero';
 import SEO from '../components/SEO'; // Import SEO component
+import { ParticlesBackground } from '../components/ui/ParticlesBackground';
 import { colors } from '../utils/colors';
 
 // Lazy load non-critical sections
@@ -19,33 +19,37 @@ const SectionLoader = () => (
 );
 
 const Home: React.FC = () => {
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
   return (
     <div className="relative">
-      <SEO 
-        title="Home" 
+      <SEO
+        title="Home"
         description="Transform your business with AI-powered automation solutions. Chatbots, lead generation, CRM integration, and more."
       />
       {/* Consistent background elements */}
-      <div 
-        className="fixed inset-0 bg-gradient-to-b from-gray-950 to-gray-900" 
-        style={{ zIndex: -2 }} 
+      <div
+        className="fixed inset-0 bg-gradient-to-b from-gray-950 to-gray-900"
+        style={{ zIndex: -2 }}
       />
 
-      {/* Static grid overlay - no animation needed */}
+      {/* Premium 3D animated grid overlay */}
       <div
-        className="fixed inset-0 pointer-events-none"
+        className="fixed inset-0 pointer-events-none opacity-40"
         style={{
           zIndex: -1,
           backgroundImage: `
-            linear-gradient(to right, ${colors.neon.blue}05 1px, transparent 1px),
-            linear-gradient(to bottom, ${colors.neon.blue}05 1px, transparent 1px)
+            linear-gradient(to right, ${colors.neon.blue}15 1px, transparent 1px),
+            linear-gradient(to bottom, ${colors.neon.blue}15 1px, transparent 1px)
           `,
           backgroundSize: '4rem 4rem',
+          maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse at center, black 0%, transparent 80%)',
+          transform: 'perspective(1000px) rotateX(60deg) translateY(-100px) scale(3)',
+          transformOrigin: 'top center',
+          animation: 'grid-move 20s linear infinite',
         }}
       />
+
+      <ParticlesBackground />
 
       {/* Hero loads immediately */}
       <div className="relative">

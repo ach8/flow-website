@@ -15,7 +15,12 @@ body {
 }
 
 /* Enhanced headings with Outfit font */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Outfit', sans-serif;
   letter-spacing: -0.03em;
 }
@@ -29,29 +34,27 @@ h1, h2, h3, h4, h5, h6 {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.03;
+  /* High-performance base64 PNG instead of SVG filter */
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAABAwMEBQYHCAkKCwwNDg8QERITWn3wAAAAchrIHRv/////63/+v//x/v+v//3////8///9///5///////6/////7//+v//9///P//5//+////7/v/+///+/7///+/v/6//+//2/v8i9SNAADo2UlEQVQ4y2NgwALG/w8Y+P/AQAeIf/AHAwzEQA04sIAHHEQAD+w/QAAAAQAEAAy+45UAAAAASUVORK5CYII=");
+  background-repeat: repeat;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Hidden as requested */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #030303;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #333;
+html,
+body {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Enhanced glowing effects */
@@ -76,14 +79,18 @@ h1, h2, h3, h4, h5, h6 {
 /* Card elevation styles - Premium Glassmorphism */
 .card-elevated {
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card-elevated:hover {
   transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.04);
   box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Enhanced input focus states */
@@ -119,4 +126,51 @@ a::after {
 
 a:hover::after {
   width: 100%;
+}
+
+/* Background Glowing Orbs */
+.bg-orb-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.bg-orb-primary {
+  width: 600px;
+  height: 600px;
+  background: rgba(167, 139, 250, 0.15); /* Purple accent */
+  top: -100px;
+  left: -200px;
+  animation: orb-float 20s infinite ease-in-out alternate;
+}
+
+.bg-orb-secondary {
+  width: 500px;
+  height: 500px;
+  background: rgba(59, 130, 246, 0.15); /* Blue accent */
+  bottom: -100px;
+  right: -150px;
+  animation: orb-float 25s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes orb-float {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes grid-move {
+  0% { transform: perspective(1000px) rotateX(60deg) translateY(0) scale(3); }
+  100% { transform: perspective(1000px) rotateX(60deg) translateY(50px) scale(3); }
 }

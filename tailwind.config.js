@@ -14,6 +14,11 @@ export default {
           950: '#030303', // Obsidian
         },
         obsidian: '#030303',
+        accent: {
+          primary: '#A78BFA',
+          secondary: '#8B5CF6',
+          glow: 'rgba(167, 139, 250, 0.15)',
+        }
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

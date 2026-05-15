@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { TrendingUp, Shield, Zap, ArrowRight, Activity, Cpu, Network } from 'lucide-react';
+import { TrendingUp, Zap, ArrowRight, Activity, Cpu, Network } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import NeonButton from '../ui/NeonButton';
+import ROICalculator from './ROICalculator';
+import ParticleNetwork from '../ui/ParticleNetwork';
 
 const ValueProposition: React.FC = () => {
   const { t } = useTranslation();
@@ -67,11 +69,15 @@ const ValueProposition: React.FC = () => {
               {/* Animated Graph Visual */}
               <div className="absolute right-0 bottom-0 top-1/2 w-full lg:w-2/3 opacity-20 lg:opacity-30 pointer-events-none">
                 <svg viewBox="0 0 200 100" className="w-full h-full overflow-visible">
-                  <path
+                  <motion.path
                     d="M0 80 Q 40 80, 50 60 T 100 40 T 150 20 T 200 5"
                     fill="none"
                     stroke="url(#gradient-line)"
                     strokeWidth="4"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
                   />
                   <defs>
                     <linearGradient id="gradient-line" x1="0" y1="0" x2="1" y2="0">
@@ -102,9 +108,15 @@ const ValueProposition: React.FC = () => {
                 </div>
                 <Activity className="text-gray-600" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.speed.title')}</h3>
-              <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.speed.metric')}</div>
-              <p className="text-gray-400 text-sm mt-auto">{t('valueProposition.speed.description')}</p>
+
+              <div className="absolute top-4 right-4 text-purple-600/20 pointer-events-none group-hover:text-purple-500/40 transition-colors duration-500">
+                <Activity size={100} strokeWidth={1} />
+              </div>
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.speed.title')}</h3>
+                <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.speed.metric')}</div>
+                <p className="text-gray-400 text-sm">{t('valueProposition.speed.description')}</p>
+              </div>
             </div>
           </BentoCard>
 
@@ -120,11 +132,29 @@ const ValueProposition: React.FC = () => {
                 </div>
                 <Cpu className="text-gray-600" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.custom.title')}</h3>
-              <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.custom.metric')}</div>
-              <p className="text-gray-400 text-sm mt-auto">{t('valueProposition.custom.description')}</p>
+
+              <div className="absolute inset-x-0 bottom-0 h-32 opacity-30 pointer-events-none group-hover:opacity-50 transition-opacity duration-500 -z-10 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-green-900/40 via-transparent to-transparent" />
+
+              <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500 pointer-events-auto mix-blend-screen">
+                <ParticleNetwork />
+              </div>
+
+              <div className="absolute top-4 right-4 text-green-600/20 pointer-events-none group-hover:text-green-500/40 transition-colors duration-500 z-10">
+                <Network size={100} strokeWidth={1} />
+              </div>
+
+              <div className="relative z-10 mt-auto pointer-events-none">
+                <h3 className="text-xl font-bold text-white mb-1">{t('valueProposition.custom.title')}</h3>
+                <div className="text-3xl font-bold text-white mb-2">{t('valueProposition.custom.metric')}</div>
+                <p className="text-gray-400 text-sm">{t('valueProposition.custom.description')}</p>
+              </div>
             </div>
           </BentoCard>
+        </div>
+
+        {/* ROI Calculator Section */}
+        <div className="mb-16">
+          <ROICalculator />
         </div>
 
         {/* CTA */}
@@ -152,7 +182,6 @@ const ValueProposition: React.FC = () => {
 // Reusable Bento Card with Spotlight Effect
 const BentoCard: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = "", delay = 0 }) => {
   const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -165,8 +194,6 @@ const BentoCard: React.FC<{ children: React.ReactNode; className?: string; delay
     <motion.div
       ref={divRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsFocused(true)}
-      onMouseLeave={() => setIsFocused(false)}
       className={`relative rounded-3xl border border-white/10 bg-gray-900/40 p-8 overflow-hidden backdrop-blur-md group ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}

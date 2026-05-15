@@ -1,14 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import NeonButton from '../ui/NeonButton';
+import ParticleNetwork from '../ui/ParticleNetwork';
+import MagneticWrapper from '../ui/MagneticWrapper';
 import { colors } from '../../utils/colors';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
-  const shouldReduceMotion = useReducedMotion();
   const navigate = useNavigate();
 
   const handleConsultClick = () => {
@@ -23,44 +24,35 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Simplified glow effects - CSS only, no animation on mobile */}
-      {!shouldReduceMotion ? (
-        <>
-          <motion.div
-            className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/30 rounded-full blur-[100px] z-0"
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ willChange: 'transform, opacity' }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/30 rounded-full blur-[100px] z-0"
-            animate={{
-              scale: [1.1, 1, 1.1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 5
-            }}
-            style={{ willChange: 'transform, opacity' }}
-          />
-        </>
-      ) : (
-        // Static fallback for reduced motion
-        <>
-          <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[100px] z-0" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/20 rounded-full blur-[100px] z-0" />
-        </>
-      )}
+      {/* Particle Network and Glow effects */}
+      <ParticleNetwork />
+      <motion.div
+        className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[120px] z-0"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        style={{ willChange: 'transform, opacity' }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-green-500/20 rounded-full blur-[120px] z-0"
+        animate={{
+          scale: [1.2, 1, 1.2],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 4
+        }}
+        style={{ willChange: 'transform, opacity' }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Title - simplified animation */}
@@ -68,11 +60,11 @@ const Hero: React.FC = () => {
           {titleWords.map((word, i) => (
             <motion.span
               key={i}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.5,
-                delay: shouldReduceMotion ? 0 : i * 0.1,
+                delay: i * 0.1,
                 ease: "easeOut",
               }}
               className="inline-block"
@@ -90,42 +82,46 @@ const Hero: React.FC = () => {
 
         <motion.p
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
           {t('hero.subtitle')}
         </motion.p>
 
         <motion.div
           className="flex flex-col sm:flex-row gap-6 justify-center mb-8"
-          initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: shouldReduceMotion ? 0 : 0.6 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div className="flex flex-col gap-3">
-            <NeonButton
-              color="blue"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3"
-              onClick={handleConsultClick}
-            >
-              <span>{t('hero.cta.consult')}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </NeonButton>
+            <MagneticWrapper strength={40}>
+              <NeonButton
+                color="blue"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 w-full sm:w-auto"
+                onClick={handleConsultClick}
+              >
+                <span>{t('hero.cta.consult')}</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </NeonButton>
+            </MagneticWrapper>
             <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
               <CheckCircle className="w-4 h-4 text-green-400" />
               <span>{t('cta.consultationNote')}</span>
             </div>
           </div>
-          <NeonButton
-            color="green"
-            variant="outline"
-            onClick={handleLearnMoreClick}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 group"
-          >
-            <span>{t('hero.cta.learn')}</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </NeonButton>
+          <MagneticWrapper strength={40}>
+            <NeonButton
+              color="green"
+              variant="outline"
+              onClick={handleLearnMoreClick}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 group w-full"
+            >
+              <span>{t('hero.cta.learn')}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </NeonButton>
+          </MagneticWrapper>
         </motion.div>
       </div>
     </section>

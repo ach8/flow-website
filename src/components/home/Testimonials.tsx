@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 import { colors } from '../../utils/colors';
-import SkeletonLoader from '../ui/SkeletonLoader';
+import { GlowingCard } from '../ui/GlowingCard';
 
 const Testimonials: React.FC = () => {
   const { t } = useTranslation();
+  const [isHovered, setIsHovered] = useState(false);
 
   // Get testimonials array with proper typing
   const testimonials = (t('testimonials.items', { returnObjects: true }) || []) as Array<{
@@ -52,35 +53,42 @@ const Testimonials: React.FC = () => {
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none" />
 
         <motion.div
-          className="flex gap-8 py-4"
+          className="flex gap-8 py-4 px-4 w-max"
           animate={{
-            x: ["0%", "-50%"]
+            x: isHovered ? undefined : ["0%", "-33.333%"] // Move exactly by 1/3 since we triplicated the array
           }}
           transition={{
-            duration: 40,
+            duration: 90, // Slower for readability
             repeat: Infinity,
             ease: "linear"
           }}
-          style={{ width: "max-content" }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
         >
           {extendedTestimonials.map((item, index) => (
-            <div
-              key={index}
-              className="w-[400px] flex-shrink-0 p-8 rounded-2xl bg-gray-900/40 border border-white/5 backdrop-blur-sm hover:bg-gray-800/40 hover:border-blue-500/20 transition-all duration-300 group"
-            >
-              {renderStars()}
-              <blockquote className="text-gray-300 text-lg mb-6 leading-relaxed group-hover:text-white transition-colors">
-                "{item.quote}"
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-sm">
-                  {item.author.charAt(0)}
+            <div key={index} className="w-[400px] flex-shrink-0">
+              <GlowingCard
+                className={`p-8 rounded-2xl border-white/5 backdrop-blur-sm transition-all duration-300 h-full ${isHovered ? 'bg-gray-900/60' : 'bg-gray-900/40' // slightly dim others when hovering the container
+                  } hover:!bg-gray-800/80 hover:scale-105 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10`}
+              >
+                <div className="relative z-10 flex flex-col h-full">
+                  {renderStars()}
+                  <blockquote className="text-gray-300 text-lg mb-8 leading-relaxed transition-colors flex-grow italic font-light">
+                    "{item.quote}"
+                  </blockquote>
+                  <div className="flex items-center gap-4 mt-auto pt-6 border-t border-white/10">
+                    <div className="w-12 h-12 rounded-full flex flex-shrink-0 items-center justify-center text-white font-bold text-lg"
+                      style={{ background: `linear-gradient(135deg, ${colors.neon.blue}, ${colors.neon.green})`, boxShadow: `0 0 15px ${colors.neon.blue}40` }}
+                    >
+                      {item.author.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-lg">{item.author}</p>
+                      <p className="text-sm" style={{ color: colors.neon.blue }}>{item.role} <span className="text-gray-500">@ {item.company}</span></p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-white">{item.author}</p>
-                  <p className="text-sm text-gray-500">{item.role} @ {item.company}</p>
-                </div>
-              </div>
+              </GlowingCard>
             </div>
           ))}
         </motion.div>

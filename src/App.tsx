@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
@@ -14,29 +14,32 @@ import LinkedinScraperTemplate from './pages/LinkedinScraperTemplate';
 import LinkedinScraperTemplateEn from './pages/LinkedinScraperTemplateEn';
 import WhatsAppBotPost from './pages/WhatsAppBotPost';
 import LanguageProvider from './components/language/LanguageProvider';
+import SmoothScroll from './components/ui/SmoothScroll';
 import './i18n';
 
 function App() {
   return (
     <HelmetProvider>
       <LanguageProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/etat-ia-2026" element={<BlogPost />} />
-              <Route path="/blog/kit-automatisation" element={<KitAutomatisation />} />
-              <Route path="/blog/template-shopify-hubspot" element={<ShopifyHubspotTemplate />} />
-              <Route path="/blog/linkedin-scraper" element={<LinkedinScraperTemplate />} />
-              <Route path="/blog/linkedin-scraper-en" element={<LinkedinScraperTemplateEn />} />
-              <Route path="/blog/whatsapp-ai-agent" element={<WhatsAppBotPost />} />
-            </Route>
-          </Routes>
-        </Router>
+        <SmoothScroll>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/etat-ia-2026" element={<BlogPost />} />
+                <Route path="/blog/kit-automatisation" element={<KitAutomatisation />} />
+                <Route path="/blog/template-shopify-hubspot" element={<ShopifyHubspotTemplate />} />
+                <Route path="/blog/linkedin-scraper" element={<LinkedinScraperTemplate />} />
+                <Route path="/blog/linkedin-scraper-en" element={<LinkedinScraperTemplateEn />} />
+                <Route path="/blog/whatsapp-ai-agent" element={<WhatsAppBotPost />} />
+              </Route>
+            </Routes>
+          </Router>
+        </SmoothScroll>
       </LanguageProvider>
     </HelmetProvider>
   );
