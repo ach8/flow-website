@@ -55,6 +55,7 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+  overflow-x: hidden;
 }
 
 /* Enhanced glowing effects */

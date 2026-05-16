@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Title - simplified animation */}
-        <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight flex flex-wrap justify-center gap-x-4 gap-y-2">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight flex flex-wrap justify-center gap-x-3 gap-y-2">
           {titleWords.map((word, i) => (
             <motion.span
               key={i}

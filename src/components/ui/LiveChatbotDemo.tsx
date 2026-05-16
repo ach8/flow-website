@@ -120,7 +120,7 @@ const LiveChatbotDemo: React.FC = () => {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-[350px] sm:w-[380px] h-[500px] max-h-[80vh] flex flex-col card-elevated rounded-2xl overflow-hidden shadow-2xl border border-blue-500/20"
+            className="fixed bottom-6 right-4 sm:right-6 md:bottom-8 md:right-8 z-50 w-[calc(100vw-2rem)] sm:w-[380px] h-[500px] max-h-[80vh] flex flex-col card-elevated rounded-2xl overflow-hidden shadow-2xl border border-blue-500/20"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-gray-900 p-4 flex justify-between items-center border-b border-white/10">

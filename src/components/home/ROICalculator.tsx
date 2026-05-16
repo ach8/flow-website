@@ -124,7 +124,7 @@ const ROICalculator: React.FC = () => {
                   key={monthlySavings}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400"
+                  className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400"
                   style={{ textShadow: '0 0 40px rgba(74, 222, 128, 0.3)' }}
                 >
                   {monthlySavings.toLocaleString('fr-FR')} €

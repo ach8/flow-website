@@ -66,7 +66,7 @@ const Testimonials: React.FC = () => {
           onHoverEnd={() => setIsHovered(false)}
         >
           {extendedTestimonials.map((item, index) => (
-            <div key={index} className="w-[400px] flex-shrink-0">
+            <div key={index} className="w-[85vw] md:w-[400px] flex-shrink-0">
               <GlowingCard
                 className={`p-8 rounded-2xl border-white/5 backdrop-blur-sm transition-all duration-300 h-full ${isHovered ? 'bg-gray-900/60' : 'bg-gray-900/40' // slightly dim others when hovering the container
                   } hover:!bg-gray-800/80 hover:scale-105 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10`}
