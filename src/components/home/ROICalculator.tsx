@@ -1,135 +1,154 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Calculator, TrendingUp, Clock, DollarSign } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { colors } from '../../utils/colors';
+import { motion } from 'framer-motion';
+import { Calculator, ArrowRight, Euro } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import NeonButton from '../ui/NeonButton';
 
 const ROICalculator: React.FC = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-    // State for the sliders
-    const [leads, setLeads] = useState(100);
-    const [conversionRate, setConversionRate] = useState(2);
-    const [avgValue, setAvgValue] = useState(1000);
+  // State for sliders
+  const [hours, setHours] = useState(15);
+  const [rate, setRate] = useState(50);
+  
+  // State for calculated values
+  const [monthlyCost, setMonthlyCost] = useState(0);
+  const [monthlySavings, setMonthlySavings] = useState(0);
 
-    // Simple calculation logic for demonstration
-    // Assuming AI increases leads by 40% and conversion rate by 30% relative
-    const newLeads = Math.round(leads * 1.4);
-    const newConversionRate = conversionRate * 1.3;
+  useEffect(() => {
+    // Calculate cost based on 4 weeks per month
+    const cost = hours * rate * 4;
+    setMonthlyCost(cost);
+    
+    // Assume AI automates 80% of these tasks
+    const savings = cost * 0.8;
+    setMonthlySavings(savings);
+  }, [hours, rate]);
 
-    const currentRevenue = Math.round(leads * (conversionRate / 100) * avgValue);
-    const projectedRevenue = Math.round(newLeads * (newConversionRate / 100) * avgValue);
-    const additionalRevenue = projectedRevenue - currentRevenue;
-
-    // Assuming AI saves 2 hours per lead processed
-    const hoursSavedWeekly = Math.round(leads * 0.5);
-
-    return (
+  return (
+    <section className="py-24 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-            className="relative rounded-3xl border border-white/10 bg-gray-900/40 p-8 overflow-hidden backdrop-blur-md"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
         >
-            {/* Background glow for the glassmorphism */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -z-10" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px] -z-10" />
-
-            <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10">
-                    <Calculator className="text-blue-400" />
-                </div>
-                <div>
-                    <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                        Calculateur de ROI Interactif
-                    </h3>
-                    <p className="text-sm text-gray-400">Découvrez l'impact de l'IA sur votre entreprise</p>
-                </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Sliders (Inputs) */}
-                <div className="space-y-8">
-                    {/* Leads Slider */}
-                    <div>
-                        <div className="flex justify-between mb-2">
-                            <label className="text-sm font-medium text-gray-300">Leads mensuels actuels</label>
-                            <span className="text-blue-400 font-mono">{leads}</span>
-                        </div>
-                        <input
-                            type="range"
-                            min="10" max="1000" step="10"
-                            value={leads}
-                            onChange={(e) => setLeads(Number(e.target.value))}
-                            className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
-                        />
-                    </div>
-
-                    {/* Conversion Slider */}
-                    <div>
-                        <div className="flex justify-between mb-2">
-                            <label className="text-sm font-medium text-gray-300">Taux de conversion (%)</label>
-                            <span className="text-blue-400 font-mono">{conversionRate}%</span>
-                        </div>
-                        <input
-                            type="range"
-                            min="0.5" max="20" step="0.5"
-                            value={conversionRate}
-                            onChange={(e) => setConversionRate(Number(e.target.value))}
-                            className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
-                        />
-                    </div>
-
-                    {/* Value Slider */}
-                    <div>
-                        <div className="flex justify-between mb-2">
-                            <label className="text-sm font-medium text-gray-300">Valeur moyenne par client (€)</label>
-                            <span className="text-blue-400 font-mono">{avgValue} €</span>
-                        </div>
-                        <input
-                            type="range"
-                            min="100" max="10000" step="100"
-                            value={avgValue}
-                            onChange={(e) => setAvgValue(Number(e.target.value))}
-                            className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
-                        />
-                    </div>
-                </div>
-
-                {/* Results */}
-                <div className="bg-gray-950/50 rounded-2xl p-6 border border-white/5 space-y-6 flex flex-col justify-center relative overflow-hidden">
-                    {/* subtle animated scanline */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-[200%] animate-[scan_4s_linear_infinite]" />
-
-                    <div className="relative z-10 flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
-                            <TrendingUp size={24} />
-                        </div>
-                        <div>
-                            <p className="text-sm text-gray-400 mb-1">Croissance CA Mensuelle (Estimée)</p>
-                            <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-                                +{additionalRevenue.toLocaleString('fr-FR')} €
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-                    <div className="relative z-10 flex items-start gap-4">
-                        <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
-                            <Clock size={24} />
-                        </div>
-                        <div>
-                            <p className="text-sm text-gray-400 mb-1">Temps sauvé par semaine</p>
-                            <div className="text-3xl font-bold text-white">
-                                ~{hoursSavedWeekly}h
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div className="w-16 h-16 mx-auto bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400 border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+            <Calculator className="w-8 h-8" />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
+              {t('roiCalculator.title')}
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            {t('roiCalculator.subtitle')}
+          </p>
         </motion.div>
-    );
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="card-elevated rounded-3xl p-8 md:p-12 relative border border-blue-500/30 overflow-hidden"
+        >
+          {/* Subtle animated background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent pointer-events-none" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+            {/* Controls */}
+            <div className="space-y-10">
+              {/* Hours Slider */}
+              <div>
+                <div className="flex justify-between mb-4">
+                  <label className="text-white font-medium">{t('roiCalculator.hoursLabel')}</label>
+                  <span className="text-blue-400 font-bold bg-blue-500/10 px-3 py-1 rounded-lg">
+                    {hours}h
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="5"
+                  max="50"
+                  step="1"
+                  value={hours}
+                  onChange={(e) => setHours(parseInt(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+              </div>
+
+              {/* Rate Slider */}
+              <div>
+                <div className="flex justify-between mb-4">
+                  <label className="text-white font-medium">{t('roiCalculator.rateLabel')}</label>
+                  <span className="text-green-400 font-bold bg-green-500/10 px-3 py-1 rounded-lg">
+                    {rate}€
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="20"
+                  max="200"
+                  step="5"
+                  value={rate}
+                  onChange={(e) => setRate(parseInt(e.target.value))}
+                  className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-green-500"
+                />
+              </div>
+            </div>
+
+            {/* Results */}
+            <div className="bg-gray-950/50 rounded-2xl p-8 flex flex-col justify-center border border-white/5 relative">
+              <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                <Euro className="w-32 h-32" />
+              </div>
+              
+              <div className="mb-6">
+                <p className="text-sm text-gray-400 uppercase tracking-wider mb-2">
+                  {t('roiCalculator.monthlyCost')}
+                </p>
+                <div className="text-3xl text-red-400/80 font-mono font-semibold line-through">
+                  {monthlyCost.toLocaleString('fr-FR')} €
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <p className="text-sm text-green-500 font-semibold uppercase tracking-wider mb-2">
+                  {t('roiCalculator.monthlySavings')}
+                </p>
+                <motion.div 
+                  key={monthlySavings}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400"
+                  style={{ textShadow: '0 0 40px rgba(74, 222, 128, 0.3)' }}
+                >
+                  {monthlySavings.toLocaleString('fr-FR')} €
+                </motion.div>
+              </div>
+
+              <NeonButton
+                color="blue"
+                className="w-full flex items-center justify-center gap-2"
+                onClick={() => navigate('/rendez-vous')}
+              >
+                <span>{t('roiCalculator.cta')}</span>
+                <ArrowRight className="w-5 h-5" />
+              </NeonButton>
+              
+              <p className="text-xs text-center text-gray-500 mt-4">
+                {t('roiCalculator.disclaimer')}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default ROICalculator;

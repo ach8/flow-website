@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Booking from './pages/Booking';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import KitAutomatisation from './pages/KitAutomatisation';
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/rendez-vous" element={<Booking />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/etat-ia-2026" element={<BlogPost />} />
                 <Route path="/blog/kit-automatisation" element={<KitAutomatisation />} />

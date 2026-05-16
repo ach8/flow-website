@@ -12,7 +12,7 @@ const ServicesSection: React.FC = () => {
   const navigate = useNavigate();
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
+    window.open('https://calendly.com/flow_ia/consultation', '_blank', 'noopener,noreferrer');
   };
 
   const handleLearnMoreClick = () => {

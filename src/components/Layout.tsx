@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import FooterSection from './footer/FooterSection';
 import DynamicBackground from './background/DynamicBackground';
 import CustomCursor from './ui/CustomCursor';
+import MobileStickyCta from './ui/MobileStickyCta';
+import LiveChatbotDemo from './ui/LiveChatbotDemo';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 const Layout: React.FC = () => {
@@ -23,6 +25,8 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <FooterSection />
+      <MobileStickyCta />
+      <LiveChatbotDemo />
     </div>
   );
 };

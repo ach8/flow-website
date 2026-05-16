@@ -8,7 +8,8 @@ import NeonButton from '../components/ui/NeonButton';
 import Breadcrumb from '../components/ui/Breadcrumb';
 import { ParticlesBackground } from '../components/ui/ParticlesBackground';
 import { GlowingCard } from '../components/ui/GlowingCard';
-import SEO from '../components/SEO'; // Import SEO component
+import SEO from '../components/SEO';
+import { ChatbotDemo, VoiceDemo, CrmDemo, EmailDemo, LeadsDemo, SocialDemo } from '../components/services/ServiceDemos'; // Import SEO component
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
@@ -22,7 +23,7 @@ const Services: React.FC = () => {
   }, [fromHero]);
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
+    window.open('https://calendly.com/flow_ia/consultation', '_blank', 'noopener,noreferrer');
   };
 
   const services = [
@@ -51,6 +52,18 @@ const Services: React.FC = () => {
       key: 'social'
     }
   ];
+
+  const renderDemo = (key: string) => {
+    switch(key) {
+      case 'chatbot': return <ChatbotDemo />;
+      case 'voice': return <VoiceDemo />;
+      case 'crm': return <CrmDemo />;
+      case 'email': return <EmailDemo />;
+      case 'leads': return <LeadsDemo />;
+      case 'social': return <SocialDemo />;
+      default: return null;
+    }
+  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -169,6 +182,11 @@ const Services: React.FC = () => {
                             </li>
                           ))}
                         </ul>
+                      </div>
+
+                      {/* Interactive Demo */}
+                      <div className="mb-8">
+                        {renderDemo(service.key)}
                       </div>
 
                       {/* Ideal For & CTA */}

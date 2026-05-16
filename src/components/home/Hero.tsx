@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   const navigate = useNavigate();
 
   const handleConsultClick = () => {
-    window.open('https://calendly.com/achraf-farhat98/consultation', '_blank', 'noopener,noreferrer');
+    navigate('/rendez-vous');
   };
 
   const handleLearnMoreClick = () => {
@@ -106,9 +106,15 @@ const Hero: React.FC = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </NeonButton>
             </MagneticWrapper>
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-400">
-              <CheckCircle className="w-4 h-4 text-green-400" />
-              <span>{t('cta.consultationNote')}</span>
+            <div className="flex flex-col items-center justify-center gap-1 mt-2 text-sm text-gray-400">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span>Audit 100% gratuit et sans engagement</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span>Stratégie sur-mesure garantie</span>
+              </div>
             </div>
           </div>
           <MagneticWrapper strength={40}>

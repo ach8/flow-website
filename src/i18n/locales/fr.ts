@@ -7,30 +7,30 @@ export default {
     contact: "Contact"
   },
   hero: {
-    title: "Propulsez votre Entreprise dans l'Ère de l'IA",
-    subtitle: "Optimisez vos opérations, générez des leads qualifiés et améliorez l'expérience client grâce à nos solutions d'intelligence artificielle",
+    title: "Arrêtez de Travailler pour votre Entreprise. Laissez l'IA Travailler pour Vous.",
+    subtitle: "Vous passez trop de temps sur des tâches chronophages ? Nous construisons des systèmes intelligents qui automatisent vos opérations, qualifient vos prospects 24/7 et vous redonnent votre temps.",
     cta: {
-      consult: "Réserver mon Audit Stratégique",
-      learn: "En Savoir Plus"
+      consult: "Réserver mon Audit",
+      learn: "Découvrir nos solutions"
     }
   },
   valueProposition: {
-    title: "Ne Subissez Plus la Technologie. Dominez-la.",
-    subtitle: "L'alliance parfaite entre stratégie humaine et puissance algorithmique. Des résultats concrets, mesurables et rapides.",
+    title: "Ne Laissez Plus l'Opérationnel Freiner votre Croissance",
+    subtitle: "Recruter coûte cher, former prend du temps. Nos collaborateurs virtuels s'intègrent en quelques semaines et ne font jamais d'erreurs.",
     roi: {
-      title: "Rentabilité Maximisée",
-      description: "Chaque interaction automatisée est une opportunité de revenus. Ne laissez plus aucun lead vous échapper.",
-      metric: "x3 ROI"
+      title: "Des Coûts Divisés par 3",
+      description: "Chaque tâche automatisée est une économie directe. Ne gaspillez plus votre budget sur des actions répétitives.",
+      metric: "-60% de coûts"
     },
     custom: {
-      title: "Architecture Unique",
-      description: "Pas de solutions copier-coller. Nous construisons l'écosystème IA qui s'adapte à VOTRE réalité.",
-      metric: "100% Adapté"
+      title: "Adapté à VOS Douleurs",
+      description: "Nous n'installons pas de 'gadgets'. Nous écoutons vos problèmes et créons l'architecture IA exacte pour les résoudre.",
+      metric: "Sur-mesure"
     },
     speed: {
       title: "Déploiement Éclair",
-      description: "De l'audit au premier résultat, nous avançons vite. Très vite.",
-      metric: "2 Semaines"
+      description: "Pendant que vos concurrents hésitent, nous déployons vos premiers agents en un temps record.",
+      metric: "14 Jours"
     }
   },
   services: {
@@ -42,64 +42,64 @@ export default {
     },
     items: {
       chatbot: {
-        title: "Assistant IA 24/7",
-        description: "Révolutionnez votre service client avec des assistants qui ne dorment jamais.",
+        title: "Service Client Autopilote",
+        description: "Fini les clients frustrés qui attendent. Vos réponses sont instantanées, même le dimanche à 3h du matin.",
         benefits: [
-          "Réponses instantanées (0s d'attente)",
-          "Disponibilité 24/7/365",
-          "Satisfaction client +40%"
+          "Réponses instantanées",
+          "Zéro temps d'attente",
+          "Traitement de 80% des requêtes"
         ],
-        ideal: "Pour un support client exceptionnel"
+        ideal: "Pour diviser par deux vos coûts de support"
       },
       leads: {
-        title: "Machine à Conversion",
-        description: "Transformez vos visiteurs en clients qualifiés automatiquement.",
+        title: "Machine à Prospection",
+        description: "Arrêtez de courir après les mauvais profils. Nos agents trouvent, qualifient et prennent rdv pour vous.",
         benefits: [
-          "Qualification automatique",
-          "Taux de conversion +45%",
-          "Coût d'acquisition -50%"
+          "Qualification 24/7",
+          "Prise de RDV automatique",
+          "Fini le démarchage à froid"
         ],
-        ideal: "Pour booster votre pipeline commercial"
+        ideal: "Pour remplir votre agenda sans effort"
       },
       email: {
-        title: "Campagnes Intelligentes",
-        description: "Des emails ultra-personnalisés qui sont réellement lus.",
+        title: "Outreach Hyper-Personnalisé",
+        description: "Personne ne lit les emails génériques. Nous générons des messages ultra-ciblés que vos prospects ont envie d'ouvrir.",
         benefits: [
-          "Taux d'ouverture +35%",
-          "Personnalisation 1:1",
-          "Tests A/B automatisés"
+          "Recherche de données auto",
+          "Rédaction sur-mesure",
+          "Taux de réponse x3"
         ],
-        ideal: "Pour maximiser l'impact marketing"
+        ideal: "Pour exploser vos taux d'ouverture"
       },
       crm: {
-        title: "Intelligence Client",
-        description: "Anticipez les besoins de vos clients avant qu'ils ne les expriment.",
+        title: "CRM Intelligent",
+        description: "Ne perdez plus des heures à faire de la saisie. Votre base de données se met à jour toute seule.",
         benefits: [
-          "Prédiction des ventes",
-          "Rétention client +55%",
-          "Gain de productivité 40%"
+          "Saisie zéro",
+          "Scoring de leads prédictif",
+          "Rappels automatiques"
         ],
-        ideal: "Pour optimiser la relation client"
+        ideal: "Pour libérer le temps de vos commerciaux"
       },
       voice: {
-        title: "Agents Vocaux IA",
-        description: "Une voix naturelle pour accueillir et guider vos appelants.",
+        title: "Secrétariat IA Vocal",
+        description: "Ne manquez plus jamais un appel client important pendant que vous êtes en rendez-vous.",
         benefits: [
-          "Reconnaissance à 98%",
-          "Support multilingue",
-          "Attente téléphonique supprimée"
+          "Décroche à chaque fois",
+          "Prend des messages clairs",
+          "Filtre les appels inutiles"
         ],
-        ideal: "Pour une expérience téléphonique moderne"
+        ideal: "Pour les indépendants très occupés"
       },
       social: {
-        title: "Social Media Auto",
-        description: "Une présence sociale active et engageante, sans y passer vos nuits.",
+        title: "Création de Contenu Auto",
+        description: "Garder une présence en ligne prend trop de temps. Laissez l'IA rédiger et planifier vos posts pendant que vous dormez.",
         benefits: [
-          "Engagement +70%",
-          "Veille concurrentielle",
-          "Planification intelligente"
+          "Veille métier",
+          "Rédaction au ton de la marque",
+          "Publication programmée"
         ],
-        ideal: "Pour dominer les réseaux sociaux"
+        ideal: "Pour une visibilité sans stress"
       }
     },
     learnMore: "En Savoir Plus"
@@ -128,14 +128,14 @@ export default {
     ]
   },
   cta: {
-    title: "Ne laissez pas vos concurrents prendre l'avance.",
-    subtitle: "Prenez rendez-vous aujourd'hui et commencez à automatiser demain.",
-    button: "Planifier une Démo",
-    consult: "Consultation Gratuite",
+    title: "Le temps que vous perdez aujourd'hui ne se rattrape pas.",
+    subtitle: "Arrêtez les tâches manuelles. Parlons de vos bottlenecks et voyons si nous pouvons les éliminer.",
+    button: "Réserver mon Audit",
+    consult: "Audit Offert",
     start: "Commencer",
     learnMore: "En Savoir Plus",
-    createFuture: "Créons l'Avenir Ensemble",
-    consultationNote: "Aucune carte de crédit requise • 30 minutes"
+    createFuture: "Libérez votre Temps",
+    consultationNote: "Audit 100% gratuit • 30 minutes de valeur pure"
   },
   process: {
     title: "Votre Feuille de Route",
@@ -165,6 +165,96 @@ export default {
       deliverables: ["Dashboard de performance", "Rapports mensuels", "Support technique prioritaire"]
     }
   },
+  caseStudies: {
+    title: "Ils Ont Fait le Choix de l'IA",
+    subtitle: "Découvrez comment nous avons transformé les opérations de ces entreprises avec des résultats mesurables.",
+    items: [
+      {
+        client: "E-commerce Leader",
+        problem: "Service client débordé, temps de réponse > 24h.",
+        solution: "Déploiement d'un agent IA multilingue connecté au CRM.",
+        results: ["Temps de réponse divisé par 4", "40h/semaine économisées", "+35% de satisfaction client"]
+      },
+      {
+        client: "Agence Immobilière",
+        problem: "Perte de leads hors des heures d'ouverture.",
+        solution: "Bot de qualification de leads et prise de RDV automatique 24/7.",
+        results: ["+55% de leads qualifiés", "Zéro opportunité manquée", "Prise de RDV x2"]
+      },
+      {
+        client: "Cabinet de Conseil",
+        problem: "Processus de prospection manuel et chronophage.",
+        solution: "Système de cold outreach ultra-personnalisé piloté par IA.",
+        results: ["Taux de réponse passé de 2% à 15%", "15 RDV qualifiés par mois générés en auto", "Coût d'acquisition divisé par 3"]
+      }
+    ]
+  },
+  pricing: {
+    title: "Comment Nous Travaillons",
+    subtitle: "Une approche claire et transparente. Pas de devis cachés, pas de surprises.",
+    packs: [
+      {
+        name: "Audit & Stratégie",
+        price: "Gratuit",
+        description: "Analyse de vos processus pour identifier les gisements d'automatisation.",
+        features: ["Appel de 30 minutes", "Cartographie des processus", "Estimation du ROI"],
+        button: "Réserver l'Audit",
+        highlighted: false
+      },
+      {
+        name: "Déploiement Sur-Mesure",
+        price: "Sur Devis",
+        description: "Création et intégration de vos agents IA dans votre écosystème.",
+        features: ["Architecture personnalisée", "Intégration CRM/Outils", "Formation de votre équipe"],
+        button: "Demander un Devis",
+        highlighted: true
+      },
+      {
+        name: "Accompagnement Mensuel",
+        price: "Abonnement",
+        description: "Nous gérons et optimisons votre infrastructure IA en continu.",
+        features: ["Maintenance proactive", "Ajustements des prompts", "Support prioritaire"],
+        button: "Nous Contacter",
+        highlighted: false
+      }
+    ]
+  },
+  faq: {
+    title: "Questions Fréquentes",
+    subtitle: "Tout ce que vous devez savoir avant de faire le grand saut.",
+    items: [
+      {
+        question: "Faut-il des compétences techniques pour utiliser vos solutions ?",
+        answer: "Pas du tout ! Nous concevons nos systèmes pour qu'ils soient 'Plug & Play'. Vous et votre équipe n'aurez besoin d'aucune compétence en codage ou en IA pour les utiliser au quotidien."
+      },
+      {
+        question: "Mes données sont-elles en sécurité ?",
+        answer: "La sécurité est notre priorité absolue. Nous utilisons des API d'entreprise sécurisées et les données traitées par nos agents IA ne sont jamais utilisées pour entraîner des modèles publics."
+      },
+      {
+        question: "Combien de temps faut-il pour voir les premiers résultats ?",
+        answer: "Nos intégrations sont très rapides. En général, un agent de service client ou un workflow d'automatisation est déployé et opérationnel en 2 à 4 semaines, générant un ROI quasi immédiat."
+      },
+      {
+        question: "Que se passe-t-il si le bot fait une erreur ?",
+        answer: "Nous mettons en place des 'garde-fous' stricts. L'IA est limitée au périmètre exact de votre entreprise. En cas de doute, l'agent peut transférer la conversation à un humain de votre équipe instantanément."
+      }
+    ]
+  },
+  leadMagnet: {
+    title: "Pas encore prêt à sauter le pas ?",
+    subtitle: "Téléchargez notre guide gratuit : '5 Automatisations IA pour gagner 10h par semaine sans coder'.",
+    placeholder: "Votre adresse email",
+    button: "Télécharger le Guide",
+    spamText: "100% valeur. Pas de spam, promis."
+  },
+  chatbot: {
+    greeting: "Bonjour 👋 Je suis l'assistant IA de Flow. Une question sur nos services ?",
+    inputPlaceholder: "Posez votre question...",
+    quickReplies: ["Combien ça coûte ?", "Quels sont vos services ?", "Prendre RDV"],
+    fallbackReply: "Excellente question ! Mon rôle est juste de faire une petite démo ici. Pour avoir une vraie réponse experte, le mieux est de réserver un audit gratuit de 30min avec notre équipe !",
+    bookCall: "Voir le calendrier"
+  },
   about: {
     hero: {
       title: "Notre Vision",
@@ -192,6 +282,16 @@ export default {
       title: "Prêt à Transformer Votre Entreprise ?",
       button: "Planifier une Consultation"
     }
+  },
+  roiCalculator: {
+    title: "Combien d'heures perdez-vous ?",
+    subtitle: "Estimez vos pertes actuelles et découvrez combien l'IA peut vous faire économiser.",
+    hoursLabel: "Heures perdues par semaine",
+    rateLabel: "Votre taux horaire moyen (€)",
+    monthlyCost: "Coût de l'inaction (par mois)",
+    monthlySavings: "Économies avec l'IA",
+    cta: "Arrêtez de perdre de l'argent",
+    disclaimer: "Basé sur 4 semaines par mois. L'IA peut automatiser jusqu'à 80% de ces tâches."
   },
   contact: {
     title: "Contactez-nous",

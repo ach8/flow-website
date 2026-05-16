@@ -23,6 +23,10 @@ const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
+  const handleConsultClick = () => {
+    window.open('https://calendly.com/flow_ia/consultation', '_blank', 'noopener,noreferrer');
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     // Clear error when user starts typing
@@ -91,21 +95,15 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      details: "contact@flow-ia.com",
-      color: "blue"
-    },
-    {
       icon: <Phone className="w-6 h-6" />,
       title: "Téléphone",
-      details: "+33 (0) 1 23 45 67 89",
+      details: "+33 7 67 51 54 97",
       color: "green"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Bureaux",
-      details: "Paris, France / Remote",
+      details: "France",
       color: "purple"
     }
   ];
@@ -147,7 +145,7 @@ const Contact: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="lg:col-span-4 space-y-8"
           >
-            <div className="bg-gray-900/40 border border-white/5 backdrop-blur-xl rounded-3xl p-8 shadow-2xl relative overflow-hidden group">
+            <div className="card-elevated rounded-3xl p-8 relative overflow-hidden group">
               {/* Subtle background glow */}
               <div className="absolute -inset-px bg-gradient-to-br from-blue-500/10 via-transparent to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -169,6 +167,20 @@ const Contact: React.FC = () => {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <h4 className="text-white font-medium mb-4">Préférez-vous un appel ?</h4>
+                <button 
+                  onClick={handleConsultClick}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-black font-semibold hover:bg-gray-200 transition-colors"
+                >
+                  <span className="relative flex h-3 w-3 mr-1">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  </span>
+                  Prendre Rendez-vous
+                </button>
+              </div>
             </div>
           </motion.div>
 
@@ -179,7 +191,7 @@ const Contact: React.FC = () => {
             transition={{ delay: 0.3 }}
             className="lg:col-span-8"
           >
-            <div className="bg-gray-900/40 border border-white/5 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-2xl relative">
+            <div className="card-elevated rounded-3xl p-8 md:p-10 relative">
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

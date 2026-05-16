@@ -7,120 +7,120 @@ export default {
     contact: "Contact"
   },
   hero: {
-    title: "Propel Your Business into the AI Era",
-    subtitle: "We streamline your operations, generate leads, and elevate customer experiences with intelligent AI solutions",
+    title: "Stop Working for Your Business. Let AI Work for You.",
+    subtitle: "Spending too much time on repetitive tasks? We build intelligent systems that automate your operations, qualify your leads 24/7, and give you your time back.",
     cta: {
-      consult: "Book My Strategic Audit",
-      learn: "Learn More"
+      consult: "Book my Audit",
+      learn: "Discover our solutions"
     }
   },
   valueProposition: {
-    title: "Don't Just Adopt Tech. Dominate It.",
-    subtitle: "The perfect alliance between human strategy and algorithmic power. Concrete, measurable, and fast results.",
+    title: "Don't Let Operations Slow Your Growth",
+    subtitle: "Hiring is expensive, training takes time. Our virtual employees integrate in weeks and never make mistakes.",
     roi: {
-      title: "Maximized Profitability",
-      description: "Every automated interaction is a revenue opportunity. Stop letting leads slip through the cracks.",
-      metric: "3x ROI"
+      title: "Costs Divided by 3",
+      description: "Every automated task is a direct saving. Stop wasting your budget on repetitive actions.",
+      metric: "-60% costs"
     },
     custom: {
-      title: "Unique Architecture",
-      description: "No cookie-cutter solutions. We build the AI ecosystem that adapts to YOUR reality.",
-      metric: "100% Tailored"
+      title: "Tailored to YOUR Pain Points",
+      description: "We don't install 'gadgets'. We listen to your problems and build the exact AI architecture to solve them.",
+      metric: "Custom-made"
     },
     speed: {
       title: "Lightning Deployment",
-      description: "From audit to first results, we move fast. Very fast.",
-      metric: "2 Weeks"
+      description: "While your competitors hesitate, we deploy your first agents in record time.",
+      metric: "14 Days"
     }
   },
   services: {
     title: "Solutions That Pay Off",
-    subtitle: "Discover how our AI-powered services can transform your operations and drive growth",
+    subtitle: "Discover how our AI-powered services can transform your operations and boost your growth",
     overview: {
       title: "Transform Your Business with AI",
-      subtitle: "A comprehensive suite of solutions to optimize your operations and fuel your growth"
+      subtitle: "A comprehensive range of innovative solutions to optimize your operations and propel your growth"
     },
     items: {
       chatbot: {
-        title: "24/7 AI Assistant",
-        description: "Revolutionize your customer service with assistants that never sleep.",
+        title: "Autopilot Customer Service",
+        description: "No more frustrated customers waiting. Your answers are instant, even on Sunday at 3 AM.",
         benefits: [
-          "Instant responses (0s wait)",
-          "24/7/365 Availability",
-          "Customer Satisfaction +40%"
+          "Instant replies",
+          "Zero wait time",
+          "Handles 80% of requests"
         ],
-        ideal: "For exceptional customer support"
+        ideal: "To cut your support costs in half"
       },
       leads: {
-        title: "Conversion Engine",
-        description: "Automatically turn your visitors into qualified clients.",
+        title: "Prospecting Machine",
+        description: "Stop chasing the wrong profiles. Our agents find, qualify, and book meetings for you.",
         benefits: [
-          "Automated qualification",
-          "Conversion rate +45%",
-          "Acquisition cost -50%"
+          "24/7 Qualification",
+          "Automatic meeting booking",
+          "No more cold calling"
         ],
-        ideal: "To boost your sales pipeline"
+        ideal: "To fill your calendar effortlessly"
       },
       email: {
-        title: "Smart Campaigns",
-        description: "Hyper-personalized emails that actually get read.",
+        title: "Hyper-Personalized Outreach",
+        description: "Nobody reads generic emails. We generate ultra-targeted messages your prospects want to open.",
         benefits: [
-          "Open rates +35%",
-          "1:1 Personalization",
-          "Automated A/B Testing"
+          "Auto data research",
+          "Tailored copywriting",
+          "3x reply rate"
         ],
-        ideal: "To maximize marketing impact"
+        ideal: "To skyrocket your open rates"
       },
       crm: {
-        title: "Client Intelligence",
-        description: "Anticipate your clients' needs before they even express them.",
+        title: "Smart CRM",
+        description: "Stop wasting hours doing data entry. Your database updates itself.",
         benefits: [
-          "Sales prediction",
-          "Client retention +55%",
-          "Productivity gain 40%"
+          "Zero data entry",
+          "Predictive lead scoring",
+          "Automatic follow-ups"
         ],
-        ideal: "To optimize client relationships"
+        ideal: "To free up your sales team's time"
       },
       voice: {
-        title: "AI Voice Agents",
-        description: "A natural voice to welcome and guide your callers.",
+        title: "AI Voice Secretary",
+        description: "Never miss an important client call while you are in a meeting.",
         benefits: [
-          "98% Recognition rate",
-          "Multilingual support",
-          "Zero hold time"
+          "Answers every time",
+          "Takes clear messages",
+          "Filters useless calls"
         ],
-        ideal: "For a modern phone experience"
+        ideal: "For busy independent professionals"
       },
       social: {
-        title: "Social Media Auto",
-        description: "An active and engaging social presence, without the late nights.",
+        title: "Auto Content Creation",
+        description: "Maintaining an online presence takes too much time. Let AI write and schedule your posts while you sleep.",
         benefits: [
-          "Engagement +70%",
-          "Competitor monitoring",
-          "Smart scheduling"
+          "Industry monitoring",
+          "Brand voice matching",
+          "Scheduled publishing"
         ],
-        ideal: "To dominate social networks"
+        ideal: "For stress-free visibility"
       }
     },
     learnMore: "Learn More"
   },
   testimonials: {
-    title: "What Our Clients Say",
+    title: "What our clients say",
     items: [
       {
-        quote: "We were overwhelmed with customer requests. Thanks to the chatbot developed by Flow AI, our customers now receive instant responses 24/7. This has not only improved their satisfaction but also allowed us to reduce our support team's workload by 40%.",
+        quote: "We were overwhelmed by managing customer requests. Thanks to the chatbot developed by Flow AI, our customers receive instant answers 24/7. This not only improved their satisfaction but also allowed us to reduce our support team's workload by 40%.",
         author: "Sophie L.",
         role: "Marketing Manager",
         company: "Tech SME"
       },
       {
-        quote: "Flow AI has completely transformed our customer acquisition strategy. Their lead automation system helps us target the right prospects at the right time. In three months, our conversions increased by 60%, and we finally have a scalable strategy for growth.",
-        author: "Julian M.",
+        quote: "Flow AI completely transformed our customer acquisition strategy. Their lead automation system allows us to target the right prospects at the right time. In three months, our conversions increased by 60%, and we finally have a scalable strategy to grow.",
+        author: "Julien M.",
         role: "Founder",
         company: "E-commerce Plus"
       },
       {
-        quote: "The CRM integration done by Flow AI has been a game-changer for our business. Before, our customer data was scattered and difficult to leverage. Today, everything is centralized and automated, allowing us to better understand our customers and make faster, more accurate decisions.",
+        quote: "The CRM integration done by Flow AI was a game-changer for our company. Before, our customer data was scattered and hard to use. Today, everything is centralized and automated, allowing us to better understand our customers and make faster, more accurate decisions.",
         author: "Claire D.",
         role: "CRM Manager",
         company: "Pro Services"
@@ -128,64 +128,158 @@ export default {
     ]
   },
   cta: {
-    title: "Don't Let Your Competitors Get Ahead.",
-    subtitle: "Book today, start automating tomorrow.",
-    button: "Schedule a Demo",
-    consult: "Free Consultation",
-    start: "Get Started",
-    learnMore: "Learn More",
-    createFuture: "Let's Create the Future Together",
-    consultationNote: "No credit card required • 30 minutes"
+    title: "Ready to Transform Your Business?",
+    button: "Schedule a Consultation"
+  },
+  roiCalculator: {
+    title: "How many hours are you losing?",
+    subtitle: "Estimate your current losses and discover how much AI can save you.",
+    hoursLabel: "Hours lost per week",
+    rateLabel: "Your average hourly rate (€)",
+    monthlyCost: "Cost of inaction (per month)",
+    monthlySavings: "Savings with AI",
+    cta: "Stop losing money",
+    disclaimer: "Based on 4 weeks per month. AI can automate up to 80% of these tasks."
   },
   process: {
-    title: "Our Process",
-    subtitle: "A transparent 4-step approach to transform your business with AI",
+    title: "Your Roadmap",
+    subtitle: "A clear and structured approach, from initial audit to final deployment",
     audit: {
-      title: "Initial Audit",
-      description: "We conduct a comprehensive analysis of your website, identifying optimization opportunities and AI integration needs.",
+      title: "Strategic Audit",
+      description: "We analyze your current processes to identify growth opportunities and high-impact automation areas.",
       details: "Our team of experts dives deep into your business to understand your unique challenges. We don't just look to automate, but to optimize your entire value chain.",
-      deliverables: ["Full Audit Report", "Process Mapping", "ROI Estimation"]
+      deliverables: ["Comprehensive audit report", "Process mapping", "ROI estimation"]
     },
     plan: {
-      title: "Action Plan",
-      description: "We create a personalized roadmap with AI strategies, implementation timeline, and ROI projections.",
-      details: "We develop a detailed roadmap prioritizing high-impact actions. Each solution is chosen for its relevance and ability to integrate frictionlessly.",
-      deliverables: ["Technical Architecture", "Deployment Roadmap", "UX/UI Mockups"]
+      title: "Tailored Planning",
+      description: "We design a unique AI architecture, perfectly aligned with your business objectives and existing infrastructure.",
+      details: "We build a detailed roadmap prioritizing high-impact actions. Each solution is chosen for its relevance and seamless integration capabilities.",
+      deliverables: ["Technical architecture", "Deployment roadmap", "UX/UI mockups"]
     },
     ai: {
-      title: "AI Integration",
-      description: "We implement advanced AI solutions, automate processes, and integrate cutting-edge tools seamlessly.",
-      details: "Development is done in agile iterations. We rigorously test every module to ensure absolute reliability and optimal performance from day one.",
-      deliverables: ["Functional AI Solutions", "CRM/ERP Integration", "Team Training"]
+      title: "Intelligent Deployment",
+      description: "Our experts integrate AI solutions into your ecosystem with a smooth transition and zero downtime.",
+      details: "Development is done in agile iterations. We rigorously test each module to guarantee absolute reliability and optimal performance from day one.",
+      deliverables: ["Functional AI solutions", "CRM/ERP integration", "Team training"]
     },
     support: {
-      title: "Optimization & Support",
-      description: "Continuous monitoring, performance tracking, and ongoing technical support for maximum results.",
-      details: "AI evolves fast, and so does your business. We monitor performance 24/7 and propose proactive improvements to stay ahead of the curve.",
-      deliverables: ["Performance Dashboard", "Monthly Reports", "Priority Technical Support"]
+      title: "Continuous Optimization",
+      description: "We don't leave you hanging. Real-time performance monitoring and constant adjustments to guarantee maximum ROI.",
+      details: "AI evolves fast, and your business too. We monitor performance 24/7 and proactively propose improvements to keep you ahead of the curve.",
+      deliverables: ["Performance dashboard", "Monthly reports", "Priority tech support"]
     }
+  },
+  caseStudies: {
+    title: "They Chose AI",
+    subtitle: "Discover how we transformed these companies' operations with measurable results.",
+    items: [
+      {
+        client: "E-commerce Leader",
+        problem: "Overwhelmed customer service, response time > 24h.",
+        solution: "Deployment of a multilingual AI agent connected to the CRM.",
+        results: ["Response time divided by 4", "40h/week saved", "+35% customer satisfaction"]
+      },
+      {
+        client: "Real Estate Agency",
+        problem: "Losing leads outside business hours.",
+        solution: "Lead qualification bot and automatic 24/7 meeting booking.",
+        results: ["+55% qualified leads", "Zero missed opportunities", "Meeting bookings doubled"]
+      },
+      {
+        client: "Consulting Firm",
+        problem: "Manual and time-consuming prospecting process.",
+        solution: "Ultra-personalized cold outreach system driven by AI.",
+        results: ["Response rate from 2% to 15%", "15 qualified meetings per month on auto", "Acquisition cost divided by 3"]
+      }
+    ]
+  },
+  pricing: {
+    title: "How We Work",
+    subtitle: "A clear and transparent approach. No hidden fees, no surprises.",
+    packs: [
+      {
+        name: "Audit & Strategy",
+        price: "Free",
+        description: "Analysis of your processes to identify automation opportunities.",
+        features: ["30-minute call", "Process mapping", "ROI estimation"],
+        button: "Book Audit",
+        highlighted: false
+      },
+      {
+        name: "Custom Deployment",
+        price: "Custom Quote",
+        description: "Creation and integration of your AI agents into your ecosystem.",
+        features: ["Custom architecture", "CRM/Tools integration", "Team training"],
+        button: "Request Quote",
+        highlighted: true
+      },
+      {
+        name: "Monthly Support",
+        price: "Subscription",
+        description: "We manage and optimize your AI infrastructure continuously.",
+        features: ["Proactive maintenance", "Prompt adjustments", "Priority support"],
+        button: "Contact Us",
+        highlighted: false
+      }
+    ]
+  },
+  faq: {
+    title: "Frequently Asked Questions",
+    subtitle: "Everything you need to know before taking the leap.",
+    items: [
+      {
+        question: "Do I need technical skills to use your solutions?",
+        answer: "Not at all! We design our systems to be 'Plug & Play'. You and your team won't need any coding or AI skills to use them daily."
+      },
+      {
+        question: "Is my data secure?",
+        answer: "Security is our absolute priority. We use secure enterprise APIs, and data processed by our AI agents is never used to train public models."
+      },
+      {
+        question: "How long does it take to see the first results?",
+        answer: "Our integrations are very fast. Typically, a customer service agent or automation workflow is deployed and operational in 2 to 4 weeks, generating almost immediate ROI."
+      },
+      {
+        question: "What happens if the bot makes a mistake?",
+        answer: "We implement strict 'guardrails'. The AI is limited to the exact scope of your business. When in doubt, the agent can instantly transfer the conversation to a human on your team."
+      }
+    ]
+  },
+  leadMagnet: {
+    title: "Not ready to take the leap yet?",
+    subtitle: "Download our free guide: '5 AI Automations to save 10h per week without coding'.",
+    placeholder: "Your professional email",
+    button: "Download Guide",
+    spamText: "100% value. No spam, promised."
+  },
+  chatbot: {
+    greeting: "Hello 👋 I'm Flow's AI assistant. Any questions about our services?",
+    inputPlaceholder: "Ask your question...",
+    quickReplies: ["How much does it cost?", "What are your services?", "Book a call"],
+    fallbackReply: "Great question! My role here is just to give a quick demo. To get a real expert answer, the best is to book a free 30-minute audit with our team!",
+    bookCall: "View calendar"
   },
   about: {
     hero: {
       title: "Our Vision",
-      subtitle: "Transforming the business world through artificial intelligence, one company at a time."
+      subtitle: "Transforming the business world through artificial intelligence, one company at a time"
     },
     sections: [
       {
         title: "Our Story",
-        content: "At Flow AI, we believe in the power of transformation. Our story began with a simple idea: helping businesses do more by working smarter, not harder.\n\nIt all started when our founder noticed a recurring challenge in the digital world: businesses were working hard, but not always efficiently. Countless hours were spent on repetitive tasks, managing customer interactions, and manual processes. It became clear that innovation wasn't just about creating new tools, but about reimagining how we work."
+        content: "At Flow AI, we believe in the power of transformation. Our story began with a simple idea: helping businesses do more by working less.\n\nIt all started when our founder noticed a recurring challenge in the digital world: companies were working hard, but not always smart. Endless hours were spent on repetitive tasks, managing customer interactions, and manual processes. It became clear that innovation wasn't just about creating new tools, but reinventing the way we work."
       },
       {
         title: "The Birth of Flow AI",
-        content: "Picture a late-night brainstorming session, coffee cups scattered across the table, and one central question: What if technology could handle the monotonous tasks so humans could focus on what truly matters?\n\nThis question became the foundation of Flow AI. We envisioned a world where businesses operate like well-oiled machines, where teams can focus on creativity and strategy, and where technology becomes more than just a tool - it becomes a trusted partner.\n\nFrom there, we began designing solutions to help businesses:\n• Simplify their operations through intelligent automation\n• Create engaging customer experiences with AI-powered personalized interactions\n• Grow effortlessly by leveraging data effectively and innovatively"
+        content: "Imagine a night of intense brainstorming, coffee cups scattered across the table, and a central question: What if technology could handle mundane tasks so humans could focus on what truly matters?\n\nThis question was the starting point of Flow AI. We envisioned a world where businesses run like well-oiled machines, where teams can dedicate themselves to creativity and strategy, and where technology becomes more than a tool: a true trusted partner.\n\nFrom then on, we started designing solutions to enable businesses to:\n• Simplify their operations through intelligent automations\n• Create engaging customer experiences with personalized AI interactions\n• Grow effortlessly by leveraging data effectively and innovatively"
       },
       {
         title: "What Drives Us",
-        content: "At Flow AI, we're not just passionate about technology - we're storytellers. Every business we work with has a unique story, and our mission is to enhance it.\n\nWhether it's an e-commerce startup looking to scale or an established brand seeking innovation, we tailor our AI solutions to their specific journey.\n\nOur method is simple: We listen, we innovate, and we deliver."
+        content: "At Flow AI, we are not just passionate about technology: we are also storytellers. Every company we work with has a unique story, and our mission is to elevate it.\n\nWhether it's an e-commerce startup looking to scale or an established brand seeking innovation, we tailor our AI solutions to their specific journey.\n\nOur method is simple: We listen, we innovate, and we deliver."
       },
       {
         title: "The Flow AI Difference",
-        content: "What sets us apart is our commitment to the human element. While our technology is cutting-edge, we never lose sight of the importance of human experience. Behind every AI-powered chatbot, automated lead generation system, and intelligent CRM integration, there's a vision:\n\n• Creating authentic connections between businesses and their customers\n• Simplifying complexity to make technology accessible to everyone\n• Achieving measurable results while keeping processes simple and efficient\n\nWe don't just build tools - we shape the future of work. At Flow AI, we envision a world where businesses thrive effortlessly, teams are freed from repetitive tasks, and innovation flows naturally.\n\nIt's not just about automation - it's about transformation."
+        content: "What sets us apart is our commitment to the human element. Even though our technology is cutting-edge, we always keep the importance of the human experience in mind. Behind every AI-powered chatbot, every automated lead generation system, and every smart CRM integration, there is a vision:\n\n• Creating authentic connections between businesses and their customers\n• Simplifying complexity to make technology accessible to everyone\n• Achieving measurable results while keeping processes simple and efficient\n\nWe don't just build tools: we shape the future of work. At Flow AI, we imagine a world where businesses thrive effortlessly, where teams are freed from repetitive tasks, and where innovation flows naturally.\n\nIt's not just about automating: it's about transforming."
       }
     ],
     cta: {
@@ -195,16 +289,16 @@ export default {
   },
   contact: {
     title: "Contact Us",
-    subtitle: "Ready to scale? Let's talk.",
+    subtitle: "Ready to transform your business? Let's talk.",
     form: {
       firstName: "First Name",
       lastName: "Last Name",
-      email: "Work Email",
+      email: "Professional Email",
       message: "Your Message",
       submit: "Send Message",
       sending: "Sending...",
       success: "Message sent successfully!",
-      error: "Something went wrong. Please try again."
+      error: "An error occurred. Please try again."
     },
     errors: {
       firstName: "First name is required",
@@ -219,4 +313,4 @@ export default {
       }
     }
   }
-};
+}

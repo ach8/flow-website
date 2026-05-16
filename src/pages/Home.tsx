@@ -8,6 +8,11 @@ import { colors } from '../utils/colors';
 const ValueProposition = lazy(() => import('../components/home/ValueProposition'));
 const ServicesSection = lazy(() => import('../components/home/ServicesSection'));
 const ProcessSection = lazy(() => import('../components/home/ProcessSection'));
+const CaseStudiesSection = lazy(() => import('../components/home/CaseStudiesSection'));
+const ROICalculator = lazy(() => import('../components/home/ROICalculator'));
+const PricingSection = lazy(() => import('../components/home/PricingSection'));
+const LeadMagnetSection = lazy(() => import('../components/home/LeadMagnetSection'));
+const FAQSection = lazy(() => import('../components/home/FAQSection'));
 const Testimonials = lazy(() => import('../components/home/Testimonials'));
 const CtaBanner = lazy(() => import('../components/home/CtaBanner'));
 
@@ -77,7 +82,37 @@ const Home: React.FC = () => {
 
       <Suspense fallback={<SectionLoader />}>
         <div className="relative">
+          <CaseStudiesSection />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <div className="relative">
+          <ROICalculator />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <div className="relative">
+          <PricingSection />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <div className="relative">
+          <LeadMagnetSection />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <div className="relative">
           <Testimonials />
+        </div>
+      </Suspense>
+
+      <Suspense fallback={<SectionLoader />}>
+        <div className="relative">
+          <FAQSection />
         </div>
       </Suspense>
 
