@@ -12,7 +12,7 @@ const Layout: React.FC = () => {
   useScrollToTop();
 
   return (
-    <div className="min-h-screen text-gray-100 relative">
+    <div className="min-h-screen text-gray-100 relative w-full max-w-[100vw] overflow-x-hidden">
       <CustomCursor />
       <DynamicBackground />
       <div className="bg-orb-container">
