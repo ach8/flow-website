@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { MessageSquare, Users, Mail, Database, Mic, Share2, ArrowRight, Check } from 'lucide-react';
+import { MessageSquare, Users, Mail, Database, Mic, Share2, ArrowRight, Check, Zap } from 'lucide-react';
 import { colors } from '../utils/colors';
 import NeonButton from '../components/ui/NeonButton';
 import Breadcrumb from '../components/ui/Breadcrumb';
@@ -22,6 +22,27 @@ const Services: React.FC = () => {
     }
   }, [fromHero]);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+
+
+  const getImpactMetric = (key: string) => {
+    switch(key) {
+      case 'chatbot': return "Support automatisé à 80%";
+      case 'leads': return "Taux de conversion x3";
+      case 'email': return "+40% de taux de réponse";
+      case 'crm': return "Zéro saisie manuelle";
+      case 'voice': return "Disponibilité 24/7";
+      case 'social': return "Engagement multiplié par 5";
+      default: return "";
+    }
+  };
+
   const handleConsultClick = () => {
     window.open('https://calendly.com/flow_ia/consultation', '_blank', 'noopener,noreferrer');
   };
@@ -29,27 +50,33 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: <MessageSquare className="w-8 h-8" />,
-      key: 'chatbot'
+      key: 'chatbot',
+      color: colors.neon.blue
     },
     {
       icon: <Users className="w-8 h-8" />,
-      key: 'leads'
+      key: 'leads',
+      color: colors.neon.green
     },
     {
       icon: <Mail className="w-8 h-8" />,
-      key: 'email'
+      key: 'email',
+      color: '#a855f7' // Purple
     },
     {
       icon: <Database className="w-8 h-8" />,
-      key: 'crm'
+      key: 'crm',
+      color: '#ec4899' // Pink
     },
     {
       icon: <Mic className="w-8 h-8" />,
-      key: 'voice'
+      key: 'voice',
+      color: colors.neon.blue
     },
     {
       icon: <Share2 className="w-8 h-8" />,
-      key: 'social'
+      key: 'social',
+      color: colors.neon.green
     }
   ];
 
@@ -77,138 +104,137 @@ const Services: React.FC = () => {
         <Breadcrumb items={[{ label: t('nav.services'), href: '/services' }]} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1
+            className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 inline-block"
+            style={{
+              background: `linear-gradient(to right, ${colors.neon.blue}, ${colors.neon.green})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: `0 0 40px ${colors.neon.blue}40`
+            }}
+          >
+            {t('services.overview.title')}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+            {t('services.overview.subtitle')}
+          </p>
+          <NeonButton
+            color="blue"
+            onClick={handleConsultClick}
+            className="inline-flex items-center gap-2"
+          >
+            {t('cta.consult')}
+            <ArrowRight className="w-5 h-5" />
+          </NeonButton>
+        </motion.div>
+      </div>
 
-          {/* Left Column (Sticky Header) */}
-          <div className="lg:col-span-5 relative">
-            <div className="lg:sticky lg:top-32 lg:h-[calc(100vh-10rem)] flex flex-col justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="mb-6 inline-block"
-              >
-                <h1
-                  className="text-5xl md:text-7xl font-extrabold tracking-tight"
-                  style={{
-                    background: `linear-gradient(to right, ${colors.neon.blue}, ${colors.neon.green})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textShadow: `0 0 40px ${colors.neon.blue}40`
-                  }}
-                >
-                  {t('services.overview.title')}
-                </h1>
-              </motion.div>
+      <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 space-y-32 relative">
+        {/* Animated Connection Line */}
+        <div className="hidden lg:block absolute top-10 bottom-10 left-1/2 -translate-x-1/2 w-px bg-white/5 z-0">
+          <motion.div
+            className="w-full bg-gradient-to-b from-blue-500 to-green-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+            style={{ height: lineHeight }}
+          />
+        </div>
 
-              <motion.p
-                className="text-xl md:text-2xl text-gray-400 mb-10 font-light leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                {t('services.overview.subtitle')}
-              </motion.p>
+        {services.map((service, index) => {
+          const description = t(`services.items.${service.key}.description`);
+          const benefits = t(`services.items.${service.key}.benefits`, { returnObjects: true }) as string[];
+          const ideal = t(`services.items.${service.key}.ideal`);
+          const isEven = index % 2 === 1;
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <NeonButton
-                  color="blue"
-                  onClick={handleConsultClick}
-                  className="inline-flex items-center gap-2"
-                >
-                  {t('cta.consult')}
-                  <ArrowRight className="w-5 h-5" />
-                </NeonButton>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Right Column (Scrollable Services) */}
-          <div className="lg:col-span-7 flex flex-col gap-8 pb-32">
-            {services.map((service) => {
-              const description = t(`services.items.${service.key}.description`);
-              const benefits = t(`services.items.${service.key}.benefits`, { returnObjects: true }) as string[];
-              const ideal = t(`services.items.${service.key}.ideal`);
-
-              return (
-                <motion.div
-                  key={service.key}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                >
-                  <GlowingCard
-                    className="p-8 md:p-10 bg-gray-900/50 border-gray-800 transition-all duration-300 flex flex-col group hover:border-blue-500/30"
-                  >
-                    <div className="relative z-10">
-                      {/* Icon & Title */}
-                      <div className="flex items-center gap-6 mb-8">
-                        <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center bg-gray-900 border border-gray-800 transform group-hover:scale-110 transition-transform duration-500">
-                          <div className="absolute inset-0 rounded-2xl bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                          <div className="relative z-10 text-blue-400">
-                            {service.icon}
-                          </div>
-                        </div>
-                        <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-                          {t(`services.items.${service.key}.title`)}
-                        </h3>
-                      </div>
-
-                      {/* Description */}
-                      <div className="mb-8 space-y-4">
-                        {description.split('\n').map((line, i) => (
-                          <p key={i} className="text-gray-300 text-lg leading-relaxed font-light">
-                            {line}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* Benefits */}
-                      <div className="space-y-4 mb-8 bg-black/20 p-6 rounded-xl border border-white/5">
-                        <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                          Avantages Clés
-                        </h4>
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {benefits.map((benefit, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                              <span className="text-gray-300 text-sm">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Interactive Demo */}
-                      <div className="mb-8">
-                        {renderDemo(service.key)}
-                      </div>
-
-                      {/* Ideal For & CTA */}
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6 border-t border-gray-800">
-                        <div className="inline-block px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-400 italic">
-                          {ideal}
-                        </div>
-                        <NeonButton
-                          color="blue"
-                          variant="outline"
-                          onClick={handleConsultClick}
-                        >
-                          {t('services.learnMore')}
-                        </NeonButton>
+          return (
+            <motion.div
+              key={service.key}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${isEven ? 'lg:flex-row-reverse' : ''}`}
+            >
+              {/* Text Side */}
+              <div className="flex-1 space-y-8 w-full">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <div className="flex items-center gap-6">
+                    <div className="relative w-16 h-16 rounded-2xl flex items-center justify-center bg-gray-900 border border-gray-800">
+                      <div className="absolute inset-0 rounded-2xl bg-blue-500/20 blur-xl opacity-100" />
+                      <div className="relative z-10 text-blue-400">
+                        {service.icon}
                       </div>
                     </div>
-                  </GlowingCard>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white">
+                      {t(`services.items.${service.key}.title`)}
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full">
+                  <Zap className="w-4 h-4 text-blue-400" />
+                  <span className="text-sm font-medium text-blue-300">
+                    {getImpactMetric(service.key)}
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  {description.split('\n').map((line, i) => (
+                    <p key={i} className="text-gray-300 text-lg leading-relaxed font-light">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="bg-black/20 p-6 rounded-xl border border-white/5">
+                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                    Avantages Clés
+                  </h4>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+                        <span className="text-gray-300 text-sm">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4">
+                  <NeonButton
+                    color="blue"
+                    variant="outline"
+                    onClick={handleConsultClick}
+                  >
+                    {t('services.learnMore')}
+                  </NeonButton>
+                  <div className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-400 italic">
+                    {ideal}
+                  </div>
+                </div>
+              </div>
+
+              {/* Demo Side */}
+              <motion.div 
+                className="flex-1 w-full relative perspective-1000 group z-10"
+                whileHover={{ rotateY: isEven ? -2 : 2, rotateX: 2, scale: 1.02 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <div 
+                  className="absolute inset-0 blur-3xl rounded-full translate-y-10 opacity-20 transition-opacity duration-500 group-hover:opacity-40" 
+                  style={{ background: service.color }}
+                />
+                <GlowingCard className="p-6 md:p-10 bg-gray-900/50 border-gray-800 relative z-10 shadow-2xl">
+                  {renderDemo(service.key)}
+                </GlowingCard>
+              </motion.div>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* CTA Section */}

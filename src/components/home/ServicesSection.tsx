@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MessageSquare, Users, Mail, Database, Mic, Share2, ArrowRight, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { colors } from '../../utils/colors';

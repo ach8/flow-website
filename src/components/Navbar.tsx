@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import NavbarBrand from './navbar/NavbarBrand';
 import NavbarLink from './navbar/NavbarLink';
+import ServiceMegaMenu from './navbar/ServiceMegaMenu';
 import MobileMenu from './navbar/MobileMenu';
 import LanguageSelector from './navbar/LanguageSelector';
 import NeonButton from './ui/NeonButton';
@@ -28,13 +29,11 @@ const Navbar: React.FC = () => {
     window.open('https://calendly.com/flow_ia/consultation', '_blank', 'noopener,noreferrer');
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
   return (
     <motion.nav 
@@ -50,16 +49,18 @@ const Navbar: React.FC = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             <nav className="flex space-x-1">
-              <AnimatePresence mode="wait">
                 {navLinks.map((link) => (
-                  <NavbarLink
-                    key={link.to}
-                    to={link.to}
-                    label={link.label}
-                    isActive={location.pathname === link.to}
-                  />
+                  link.to === '/services' ? (
+                    <ServiceMegaMenu key={link.to} label={link.label} isActive={location.pathname === link.to} />
+                  ) : (
+                    <NavbarLink
+                      key={link.to}
+                      to={link.to}
+                      label={link.label}
+                      isActive={location.pathname === link.to}
+                    />
+                  )
                 ))}
-              </AnimatePresence>
             </nav>
             
             <div className="flex items-center space-x-4">

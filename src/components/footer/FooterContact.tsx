@@ -17,7 +17,7 @@ const FooterContact: React.FC = () => {
         <Link 
           to="/contact" 
           className="flex items-center gap-2 hover:text-blue-400 transition-colors"
-          style={{ '--hover-color': colors.neon.blue } as any}
+          style={{ '--hover-color': colors.neon.blue } as React.CSSProperties}
         >
           <Mail size={16} />
           Contacter par email

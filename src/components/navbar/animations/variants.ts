@@ -7,9 +7,9 @@ export const navbarVariants: Variants = {
     borderBottom: '1px solid rgba(31, 41, 55, 0.5)',
   },
   hidden: {
-    backgroundColor: 'transparent',
-    backdropFilter: 'none',
-    borderBottom: 'none',
+    backgroundColor: 'rgba(10, 10, 10, 0)',
+    backdropFilter: 'blur(0px)',
+    borderBottom: '1px solid rgba(31, 41, 55, 0)',
   }
 };
 

@@ -36,25 +36,35 @@ h6 {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.03;
-  /* High-performance base64 PNG instead of SVG filter */
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAABAwMEBQYHCAkKCwwNDg8QERITWn3wAAAAchrIHRv/////63/+v//x/v+v//3////8///9///5///////6/////7//+v//9///P//5//+////7/v/+///+/7///+/v/6//+//2/v8i9SNAADo2UlEQVQ4y2NgwALG/w8Y+P/AQAeIf/AHAwzEQA04sIAHHEQAD+w/QAAAAQAEAAy+45UAAAAASUVORK5CYII=");
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   will-change: transform;
   transform: translateZ(0);
 }
 
-/* Custom scrollbar - Hidden as requested */
+/* Custom premium scrollbar */
 ::-webkit-scrollbar {
-  display: none;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
 }
 
 html,
 body {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.1) #030303;
+  scrollbar-width: thin;
   overflow-x: hidden;
 }
 

@@ -1,5 +1,7 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from './components/ui/PageTransition';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -18,28 +20,38 @@ import LanguageProvider from './components/language/LanguageProvider';
 import SmoothScroll from './components/ui/SmoothScroll';
 import './i18n';
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+          <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+          <Route path="/rendez-vous" element={<PageTransition><Booking /></PageTransition>} />
+          <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+          <Route path="/blog/etat-ia-2026" element={<PageTransition><BlogPost /></PageTransition>} />
+          <Route path="/blog/kit-automatisation" element={<PageTransition><KitAutomatisation /></PageTransition>} />
+          <Route path="/blog/template-shopify-hubspot" element={<PageTransition><ShopifyHubspotTemplate /></PageTransition>} />
+          <Route path="/blog/linkedin-scraper" element={<PageTransition><LinkedinScraperTemplate /></PageTransition>} />
+          <Route path="/blog/linkedin-scraper-en" element={<PageTransition><LinkedinScraperTemplateEn /></PageTransition>} />
+          <Route path="/blog/whatsapp-ai-agent" element={<PageTransition><WhatsAppBotPost /></PageTransition>} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 function App() {
   return (
     <HelmetProvider>
       <LanguageProvider>
         <SmoothScroll>
           <Router>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/rendez-vous" element={<Booking />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/etat-ia-2026" element={<BlogPost />} />
-                <Route path="/blog/kit-automatisation" element={<KitAutomatisation />} />
-                <Route path="/blog/template-shopify-hubspot" element={<ShopifyHubspotTemplate />} />
-                <Route path="/blog/linkedin-scraper" element={<LinkedinScraperTemplate />} />
-                <Route path="/blog/linkedin-scraper-en" element={<LinkedinScraperTemplateEn />} />
-                <Route path="/blog/whatsapp-ai-agent" element={<WhatsAppBotPost />} />
-              </Route>
-            </Routes>
+            <AnimatedRoutes />
           </Router>
         </SmoothScroll>
       </LanguageProvider>

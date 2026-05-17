@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Bot, ArrowRight, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { colors } from '../../utils/colors';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const LiveChatbotDemo: React.FC = () => {
@@ -60,7 +59,7 @@ const LiveChatbotDemo: React.FC = () => {
       }
 
       // Nettoyage de l'historique : Gemini exige que le premier message soit 'user'
-      let cleanHistory = messages.map(m => ({
+      const cleanHistory = messages.map(m => ({
         role: m.type === 'bot' ? 'model' : 'user',
         parts: [{ text: m.text }]
       }));

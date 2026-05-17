@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { TrendingUp, Clock, CheckCircle } from 'lucide-react';
-import { colors } from '../../utils/colors';
 
 const CaseStudiesSection: React.FC = () => {
   const { t } = useTranslation();

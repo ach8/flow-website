@@ -59,7 +59,7 @@ const About: React.FC = () => {
 
       {/* Content Sections */}
       <div className="relative">
-        {(t('about.sections', { returnObjects: true }) as any[]).map((section: any, index: number) => (
+        {(t('about.sections', { returnObjects: true }) as {title: string, content: string}[]).map((section, index: number) => (
           <motion.section
             key={index}
             className="py-24 relative"

@@ -59,7 +59,7 @@ const CustomCursor: React.FC = () => {
             scale: 1.5,
             opacity: 0.5,
             backgroundColor: "rgba(59, 130, 246, 0.4)",
-            mixBlendMode: "screen" as any,
+            mixBlendMode: "screen" as const,
         },
     };
 

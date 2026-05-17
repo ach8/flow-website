@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CaptureForm from '../components/blog/CaptureForm';
-import { colors } from '../utils/colors';
 
 const BlogPost: React.FC = () => {
   return (

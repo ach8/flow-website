@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { colors } from '../utils/colors';
 import { ParticlesBackground } from '../components/ui/ParticlesBackground';
 import NeonInput from '../components/ui/NeonInput';
 import NeonTextarea from '../components/ui/NeonTextarea';

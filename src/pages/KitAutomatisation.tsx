@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { colors } from '../utils/colors';
 
 const KitAutomatisation: React.FC = () => {
   const [email, setEmail] = useState('');

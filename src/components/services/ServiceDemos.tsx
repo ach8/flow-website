@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, User, Mic, Play, Pause, BarChart3, Mail, TrendingUp, ArrowRight } from 'lucide-react';
+import { Bot, Play, Pause, BarChart3, Mail, TrendingUp, ArrowRight } from 'lucide-react';
 
 export const ChatbotDemo = () => (
   <div className="w-full bg-gray-950 rounded-xl border border-gray-800 p-4 font-sans text-sm mt-6 shadow-inner relative overflow-hidden">

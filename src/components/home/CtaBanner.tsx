@@ -49,10 +49,6 @@ const CtaBanner: React.FC = () => {
                 <CheckCircle className="w-4 h-4 text-green-400" />
                 <span>Audit 100% gratuit et sans engagement</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>Si nous ne trouvons pas de ROI, l'audit est offert</span>
-              </div>
             </div>
           </div>
         </motion.div>

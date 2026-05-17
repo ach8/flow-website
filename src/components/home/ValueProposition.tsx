@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { TrendingUp, Zap, ArrowRight, Activity, Cpu, Network } from 'lucide-react';
 import { colors } from '../../utils/colors';
 import NeonButton from '../ui/NeonButton';
-import ROICalculator from './ROICalculator';
 import ParticleNetwork from '../ui/ParticleNetwork';
 
 const ValueProposition: React.FC = () => {
@@ -150,11 +149,6 @@ const ValueProposition: React.FC = () => {
               </div>
             </div>
           </BentoCard>
-        </div>
-
-        {/* ROI Calculator Section */}
-        <div className="mb-16">
-          <ROICalculator />
         </div>
 
         {/* CTA */}

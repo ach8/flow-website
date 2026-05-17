@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Download, MessageCircle, FileJson, FileText } from 'lucide-react';
+import { ArrowLeft, MessageCircle, FileJson, FileText } from 'lucide-react';
 import { useLanguageDetection } from '../hooks/useLanguageDetection';
 
 const WhatsAppBotPost: React.FC = () => {

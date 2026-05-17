@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Calculator, ArrowRight, Euro } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import NeonButton from '../ui/NeonButton';
+import AnimatedCounter from '../ui/AnimatedCounter';
 
 const ROICalculator: React.FC = () => {
   const { t } = useTranslation();
@@ -78,6 +79,7 @@ const ROICalculator: React.FC = () => {
                   value={hours}
                   onChange={(e) => setHours(parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                  style={{ backgroundSize: `${((hours - 5) * 100) / (50 - 5)}% 100%`, backgroundImage: 'linear-gradient(#3b82f6, #3b82f6)', backgroundRepeat: 'no-repeat' }}
                 />
               </div>
 
@@ -97,6 +99,7 @@ const ROICalculator: React.FC = () => {
                   value={rate}
                   onChange={(e) => setRate(parseInt(e.target.value))}
                   className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-green-500"
+                  style={{ backgroundSize: `${((rate - 20) * 100) / (200 - 20)}% 100%`, backgroundImage: 'linear-gradient(#4ade80, #4ade80)', backgroundRepeat: 'no-repeat' }}
                 />
               </div>
             </div>
@@ -112,7 +115,7 @@ const ROICalculator: React.FC = () => {
                   {t('roiCalculator.monthlyCost')}
                 </p>
                 <div className="text-3xl text-red-400/80 font-mono font-semibold line-through">
-                  {monthlyCost.toLocaleString('fr-FR')} €
+                  <AnimatedCounter value={monthlyCost} /> €
                 </div>
               </div>
 
@@ -120,15 +123,12 @@ const ROICalculator: React.FC = () => {
                 <p className="text-sm text-green-500 font-semibold uppercase tracking-wider mb-2">
                   {t('roiCalculator.monthlySavings')}
                 </p>
-                <motion.div 
-                  key={monthlySavings}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
+                <div
                   className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400"
                   style={{ textShadow: '0 0 40px rgba(74, 222, 128, 0.3)' }}
                 >
-                  {monthlySavings.toLocaleString('fr-FR')} €
-                </motion.div>
+                  <AnimatedCounter value={monthlySavings} /> €
+                </div>
               </div>
 
               <NeonButton

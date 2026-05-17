@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { colors } from '../../utils/colors';
-import { linkHoverVariants, underlineVariants } from './animations/variants';
+import { linkHoverVariants } from './animations/variants';
 
 interface NavbarLinkProps {
   to: string;

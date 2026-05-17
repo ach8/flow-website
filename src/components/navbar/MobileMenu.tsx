@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
-import { colors } from '../../utils/colors';
 import NavbarLink from './NavbarLink';
 import LanguageToggle from '../LanguageToggle';
 import NeonButton from '../ui/NeonButton';
